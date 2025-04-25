@@ -510,11 +510,11 @@ body#splash-page {
 /* === LC3 COMPONENTS ======================================= */
 body {
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
-background: #7d7e7d; /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover,  #7d7e7d 0%, #0e0e0e 100%) fixed; /* FF3.6-15 */
-background: -webkit-radial-gradient(center, ellipse cover,  #7d7e7d 0%,#0e0e0e 100%) fixed; /* Chrome10-25,Safari5.1-6 */
-background: radial-gradient(ellipse at center,  #7d7e7d 0%,#0e0e0e 100%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+background: #fff; /* Old browsers */
+/*background: -moz-radial-gradient(center, ellipse cover,  #7d7e7d 0%, #0e0e0e 100%) fixed; /* FF3.6-15 */
+/*background: -webkit-radial-gradient(center, ellipse cover,  #7d7e7d 0%,#0e0e0e 100%) fixed; /* Chrome10-25,Safari5.1-6 */
+/*background: radial-gradient(ellipse at center,  #7d7e7d 0%,#0e0e0e 100%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .navbar-inverse {
@@ -829,9 +829,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
 /* === 5.0 ABSORB MODS =====================
 nav.navbar > .container {
 	width: 100%;
+	max-width: 1280px;
 }
 #master-container {
 	width: 100%;
+	max-width: 1280px;
 }
 body {
 	background-color: #fff;
