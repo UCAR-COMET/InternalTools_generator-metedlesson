@@ -2,24 +2,30 @@
     $moduleTitle1 = "<%= lessonTitle %>";
 	$agreeLink = "<%= pathStructure %>distribute/getZip.php?moduleID=<%= lessonID %>&type=download&structure=dynamic"; 
 ?>
-<!DOCTYPE html>
-<html lang="en" class="light" style="color-scheme: light;">
+<!doctype html>
+<html lang="<% if (lessonLang === 'ES') { %>es<% } else if (lessonLang === 'FR') { %>fr<% } else { %>en<% } %>">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= lessonTitle %></title>
-    <meta name="author" content="UCAR/COMET">
-    <meta name="dcterms.rightsHolder" content="UCAR/COMET">
+    <meta name="author" content="">
+    <meta name="copyright" content="UCAR/COMET">
     <meta name="robots" content="all">
-    <meta name="Description" content="<%= lessonDesc %>">
-    <meta name="keywords" content="<%= lessonKeys %>">
     <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="initial-scale=1.0">
-    <link rel="stylesheet" href="src/css/layout.css">
-    <link rel="stylesheet" href="src/css/core.css">
-    <script src="src/js/jquery.min.js"></script>
-    <script src="src/js/defaults.js"></script>
+<!-- =CORE TAGS START= -->
+<link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/module-custom.css">
+  <script src="jquery/jquery.min.js"></script>
+  <script src="jquery/jquery-ui.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <!-- lc2024: module-print.css, defaults.js -->
+  <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
+  <script src="jquery/defaults.js"></script>
+<!-- =CORE TAGS END= -->
     <script>
+    var printVersion = false; // Specify Print View.  [true] for PRINT, or [false] for DYNAMIC content.
+
     // cleans the download version markup
     $(document).ready(function() {
         // acquire real content then remove junk
@@ -35,81 +41,154 @@
         $content_area.append('<div id="license_agree"></div>');
         var $new_license = $('#license_agree');
             $new_license.append($agree_content);
-            $new_license.before('<h3 style="text-align:center">License Agreement</h3>');
+            $new_license.before('<h3 style="text-align:center"><% if (lessonLang === "ES") { %>Acuerdo de licencia<% } else if (lessonLang === "FR") { %>Contrat de license<% } else { %>License Agreement<% } %></h3>');
             $new_license.after('<div id="agree_btns"><span></span><span></span></div>');
         var $agree_btns = $('#agree_btns');
             $agree_btns.children('span:first').append($yes_accept);
             $agree_btns.children('span:last').append($no_accept);
-            $agree_btns.children('span:first input').addClass('agree').attr('value', 'I Accept');
-            $agree_btns.children('span:last input').attr('value', 'I do not accept');
+            $agree_btns.children('span:first input').addClass('agree').attr('value', '<% if (lessonLang === "ES") { %>Acepto<% } else if (lessonLang === "FR") { %>J\'accepte<% } else { %>I Accept<% } %>');
+            $agree_btns.children('span:last input').attr('value', '<% if (lessonLang === "ES") { %>No acepto<% } else if (lessonLang === "FR") { %>Je n\'accepte pas<% } else { %>I do not accept<% } %>');
         // add LC2+ styling
-    $('#agree_btns input:first').addClass('dwn_agree_btn');
-        $('#agree_btns input:last').addClass('dwn_disagree_btn').css('margin-left', '6px');
+        $('#agree_btns input:first').addClass('btn btn-success');
+        $('#agree_btns input:last').addClass('btn btn-default').css('margin-left', '6px');
             $agree_btns.after($notice);
+            //$agree_btns.after('<h4>Notice!</h4>');  //This notice should be removed past JAN/2021
             $content_area.find('p:last').removeAttr('style');
             $agreement.remove();
     });
     </script>
+<!-- IE SUPPORT ===================================-->
+<!--[if lte IE 9]>
+    <script type="text/javascript" src="ie-support/respond.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="ie-support/ie-support.css" />
+<![endif]-->
 </head>
-
 <body>
-    <nav class="sticky top-0 z-50 w-full h-16 border-b backdrop-filter backdrop-blur-xl bg-opacity-5 md:px-4 px-2">
-        <div class="mx-auto flex h-full items-center justify-between p-1 sm:p-3 md:gap-2">
-            <div class="flex items-center gap-5"><button
-                    class="items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9 md:hidden flex"
-                    type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:Raqj6:"
-                    data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-align-left">
-                        <line x1="21" x2="3" y1="6" y2="6"></line>
-                        <line x1="15" x2="3" y1="12" y2="12"></line>
-                        <line x1="17" x2="3" y1="18" y2="18"></line>
-                    </svg></button>
-                <div class="flex items-center gap-6">
-                    <div class="hidden md:flex"><a href="index.htm" class="text-md font-semibold"><%= lessonTitle %></a></div>
-                    <div class="hidden md:flex items-center gap-5 text-sm font-medium text-muted-foreground">
-                        <!-- additional links -->
-                    </div>
-                </div>
-            </div>
-            <div class="flex sm:ml-0 gap-2">
-                <!-- print/download links removed from inner pages -->
-                 <p><% if (lessonLang === 'ES') { %>Descargar<% } else if (lessonLang === 'FR') { %>Télécharger<% } else { %>Download<% } %></p>
-            </div>
+    <!--NAVBAR-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <% if (lessonLang === 'ES') { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Inicio</a></li>
+                <% if (templateType === 'articulate-shell') { %>
+                <li><a href="storyline/story.html" target="_blank">Lección <span class="glyphicon glyphicon-new-window"></span></a></li>
+                <% } else { %>
+                <li><a href="navmenu.php">Lección</a></li>
+                <% } %>
+                <li class="active"><a href="download.php">Descargar</a></li>
+                <li><a href="media_gallery.php">Galería multimedia</a></li>
+                <li><a href="#userQuiz" data-toggle="modal">Prueba</a></li>
+                <li><a href="#userSurvey" data-toggle="modal">Encuesta</a></li>
+                <li><a href="" id="booster-link">Refuerzo</a></li>
+                <% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %>
+                <li><a href="contributors.htm">Colaboradores</a></li>
+            <% } %>
+            </ul>
+            <% } else if (lessonLang === 'FR') { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Accueil</a></li>
+                <% if (templateType === 'articulate-shell') { %>
+                <li><a href="storyline/story.html" target="_blank">Leçon <span class="glyphicon glyphicon-new-window"></span></a></li>
+                <% } else { %>
+                <li><a href="navmenu.php">Leçon</a></li>
+                <% } %>
+                <li class="active"><a href="download.php">Télécharger</a></li>
+                <li><a href="media_gallery.php">Médiathèque</a></li>
+                <li><a href="#userQuiz" data-toggle="modal">Questionnaire</a></li>
+                <li><a href="#userSurvey" data-toggle="modal">Sondage</a></li>
+                <li><a href="" id="booster-link">Questions de suivi</a></li>
+                <% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %>
+                <li><a href="contributors.htm">Contributeurs</a></li>
+            <% } %>
+            </ul>
+            <% } else { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Home</a></li>
+                <% if (templateType === 'articulate-shell') { %>
+                <li><a href="storyline/story.html" target="_blank">Lesson <span class="glyphicon glyphicon-new-window"></span></a></li>
+                <% } else { %>  
+                <li><a href="navmenu.php">Lesson</a></li>
+                <% } %>
+                <li class="active"><a href="download.php">Download</a></li>
+                <li><a href="media_gallery.php">Gallery</a></li>
+                <li><a href="#userQuiz" data-toggle="modal">Quiz</a></li>
+                <li><a href="#userSurvey" data-toggle="modal">Survey</a></li>
+                <li><a href="" id="booster-link">Booster</a></li>
+                <% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %><li><a href="contributors.htm">Contributors</a></li>
+            <% } %>
+            </ul>
+            <% } %>
+        </div>
         </div>
     </nav>
-    <main class="px-5 sm:px-8 h-auto">
-        <div class="flex items-start gap-14">
-            <div class="flex-1 md:flex-[6]">
-                <div class="flex items-start gap-14">
-                    <div class="flex-[3] pt-10">
-                        
-                        <div class="typography">
-                            <p class="sr-only -mt-4 text-base text-muted-foreground text-[16.5px]">License Agreement</p>
-                            <div id="maincontent">
-                                <div id="dl_agree">
-                                    <% if (lessonLang === 'ES') { %>
-                                    <?php include('<%= pathStructure %>download_agreement_es.txt'); ?>
-                                    <% } else if (lessonLang === 'FR') { %>
-                                    <?php include('<%= pathStructure %>download_agreement_fr.txt'); ?>
-                                    <% } else { %>
-                                    <?php include('<%= pathStructure %>download_agreement.txt'); ?>
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
+    <main id="master-container" class="container">
+        <article class="row">
+            <section id="lesson-content" class="col-sm-12">
+                <h2 id="lesson-sidebar-title" class="module-title-text"></h2>
+                <div id="menu" class="sidebar-toc">
+                    <h4 id="lesson-sidebar-unit-title"><% if (lessonLang === 'ES') { %>Descargar<% } else if (lessonLang === 'FR') { %>Télécharger<% } else { %>Download<% } %></h4>
+                </div>
+                <hr>
+                <div id="maincontent">
+                    <div id="dl_agree">
+                        <% if (lessonLang === 'ES') { %>
+                        <?php include('<%= pathStructure %>download_agreement_es.txt'); ?>
+                        <% } else if (lessonLang === 'FR') { %>
+                        <?php include('<%= pathStructure %>download_agreement_fr.txt'); ?>
+                        <% } else { %>
+                        <?php include('<%= pathStructure %>download_agreement.txt'); ?>
+                        <% } %>
                     </div>
                 </div>
+            </section>
+        </article>
+
+        <!--FOOTER-->
+        <footer id="lesson-footer" class="row">
+            <div class="col-md-8">
+            <% if (lessonLang === 'ES') { %>
+                <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a> - Reservados todos los derechos.</p>
+            <% } else if (lessonLang === 'FR') { %>
+                <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a> - Tous droits réservés.</p>
+            <% } else { %>
+                <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
+            <% } %>
             </div>
-        </div>
+            <div class="col-md-4">
+            <% if (lessonLang === 'ES') { %>
+                <ul id="parent-links">
+                    <li><a href="https://www.meted.ucar.edu/legal_es.htm">Avisos legales</a></li>
+                    <li><a href="https://www.comet.ucar.edu/">COMET</a></li>
+                    <li><a href="https://www.meted.ucar.edu/index_es.php">MetEd</a></li>
+                </ul>
+            <% } else if (lessonLang === 'FR') { %>
+                <ul id="parent-links">
+                    <li><a href="https://www.meted.ucar.edu/legal.htm">Mentions juridiques</a></li>
+                    <li><a href="https://www.comet.ucar.edu/">COMET</a></li>
+                    <li><a href="https://www.meted.ucar.edu/">MetEd</a></li>
+                </ul>
+            <% } else { %>
+                <ul id="parent-links">
+                    <li><a href="https://www.meted.ucar.edu/legal.htm">Legal Notices</a></li>
+                    <li><a href="https://www.comet.ucar.edu/">COMET</a></li>
+                    <li><a href="https://www.meted.ucar.edu/">MetEd</a></li>
+                </ul>
+            <% } %>
+            </div>
+        </footer>
     </main>
-    <footer class="w-full h-16 border-t">
-        <div
-            class="flex flex-wrap items-center justify-center sm:justify-between gap-4 sm:gap-0 w-full h-full px-2 sm:py-0 py-3 sm:px-4 lg:px-8 text-sm text-muted-foreground">
-            <p class="text-center">© <%= copyrightYear %>, <a class="font-semibold"
-                    href="https://www.meted.ucar.edu/">COMET MetEd</a> - All Rights Reserved.</p>
-            <div class="text-center hidden md:block"></div>
-        </div>
-    </footer>
+
+    <!-- QUIZ / SURVEY PROMPTS ========================-->
+    <div id="quiz-prompt"></div>
 </body>
 </html>

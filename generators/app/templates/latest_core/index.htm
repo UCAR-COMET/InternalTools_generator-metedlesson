@@ -1,86 +1,207 @@
-<!DOCTYPE html>
-<html lang="en" class="light" style="color-scheme: light;">
+<!doctype html>
+<html lang="<% if (lessonLang === 'ES') { %>es<% } else if (lessonLang === 'FR') { %>fr<% } else { %>en<% } %>">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= lessonTitle %></title>
-    <meta name="author" content="UCAR/COMET">
-    <meta name="dcterms.rightsHolder" content="UCAR/COMET">
-    <meta name="robots" content="all">
-    <meta name="Description" content="<%= lessonDesc %>">
-    <meta name="keywords" content="<%= lessonKeys %>">
-    <meta name="viewport" content="width=device-width">
-    <meta name="viewport" content="initial-scale=1.0">
-    <link rel="stylesheet" href="src/css/layout.css">
-    <script src="src/js/jquery.min.js"></script>
-    <script src="src/js/defaults.js"></script>
-</head>
+  <meta charset="UTF-8">
+  <title><%= lessonTitle %></title>
+  <meta name="author" content="UCAR/COMET">
+  <meta name="dcterms.rightsHolder" content="UCAR/COMET">
+  <meta name="robots" content="all">
+  <meta name="Description" content="<%= lessonDesc %>">
+  <meta name="keywords" content="<%= lessonKeys %>">
+  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="initial-scale=1.0">
+<!-- =CORE TAGS START= -->
+  <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/module-custom.css">
+  <script src="jquery/jquery.min.js"></script>
+  <script src="jquery/jquery-ui.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <!--lc defaults-->
+  <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
+  <script src="jquery/defaults.js"></script>
+<!-- =CORE TAGS END= -->
+  <script>
+    var printVersion = false; // Specify Print View.  Only [true] for print.php
+    var lessonID = <%= lessonID %>; // Specify Lesson ID to add preassessment, or 0 for no preassessment.
 
+    // NOTE: Relative path breaks the download version!!!
+    var path = "https://meted.ucar.edu/education_training/lesson/" + lessonID + "/preassessment";
+    $(function () {
+      if (lessonID > 0) {
+        $('#pre-assessment-path').attr('href', path);
+        $('.begin-lesson-button').attr('data-toggle', 'modal');
+        $('.begin-lesson-button').attr('href', "#beginModule");
+      }
+    });
+  </script>
+
+<!-- IE SUPPORT ==================================-->
+<!--[if lte IE 9]>
+  <script type="text/javascript" src="ie-support/html5shiv.js"></script>
+  <script type="text/javascript" src="ie-support/respond.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="ie-support/ie-support.css" />
+<![endif]-->
+</head>
 <body>
-    <nav class="sticky top-0 z-50 w-full h-16 border-b backdrop-filter backdrop-blur-xl bg-opacity-5 md:px-4 px-2">
-        <div class="mx-auto flex h-full items-center justify-between p-1 sm:p-3 md:gap-2">
-            <div class="flex items-center gap-5"><button
-                    class="items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9 md:hidden flex"
-                    type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:Raqj6:"
-                    data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-align-left">
-                        <line x1="21" x2="3" y1="6" y2="6"></line>
-                        <line x1="15" x2="3" y1="12" y2="12"></line>
-                        <line x1="17" x2="3" y1="18" y2="18"></line>
-                    </svg></button>
-                <div class="flex items-center gap-6">
-                    <div class="hidden md:flex"><a href="index.htm" class="text-md font-semibold"><%= lessonTitle %></a></div>
-                    <div class="hidden md:flex items-center gap-5 text-sm font-medium text-muted-foreground">
-                        <!-- additional links -->
-                    </div>
-                </div>
-            </div>
-            <div class="flex sm:ml-0 gap-2">
-                <a
-                    href="print.php"
-                    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 w-9"
-                    aria-label="Print" title="Print"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-printer w-[1.1rem] h-[1.1rem]">
-                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-                        <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"></path>
-                        <rect x="6" y="14" width="12" height="8" rx="1"></rect>
-                    </svg>
-                </a>
-                <a
-                    href="download.php"
-                    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 w-9"
-                    aria-label="Download" title="Download"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-download w-[1.1rem] h-[1.1rem]">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" x2="12" y1="15" y2="3"></line>
-                    </svg>
-                </a>
-            </div>
+
+  <!--NAVBAR-->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+      <% if (lessonLang==='ES' ) { %>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="">Inicio</a></li>
+<% if (templateType==='articulate-shell' ) { %> <li><a href="storyline/story.html" target="_blank">Lección <span class="glyphicon glyphicon-new-window"></span></a></li>
+<% } else { %>  <li><a href="navmenu.php">Lección</a></li><% } %>
+          <li><a href="download.php">Descargar</a></li>
+          <li><a href="media_gallery.php">Galería multimedia</a></li>
+          <li><a href="#userQuiz" data-toggle="modal">Prueba</a></li>
+          <li><a href="#userSurvey" data-toggle="modal">Encuesta</a></li>
+          <li><a href="" id="booster-link">Refuerzo</a></li>
+<% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %> <li><a href="contributors.htm">Colaboradores</a></li><% } %>
+        </ul>
+      <% } else if (lessonLang==='FR' ) { %>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="">Accueil</a></li>
+        <% if (templateType==='articulate-shell' ) { %>
+          <li><a href="storyline/story.html" target="_blank">Leçon <span class="glyphicon glyphicon-new-window"></span></a></li>
+        <% } else { %>
+          <li><a href="navmenu.php">Leçon</a></li>
+        <% } %>
+          <li><a href="download.php">Télécharger</a></li>
+          <li><a href="media_gallery.php">Médiathèque</a></li>
+          <li><a href="#userQuiz" data-toggle="modal">Questionnaire</a></li>
+          <li><a href="#userSurvey" data-toggle="modal">Sondage</a></li>
+          <li><a href="" id="booster-link">Questions de suivi</a></li>
+        <% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %>
+          <li><a href="contributors.htm">Contributeurs</a></li>
+      <% } %>
+        </ul>
+      <% } else { %>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="">Home</a></li>
+        <% if (templateType==='articulate-shell' ) { %>
+          <li><a href="storyline/story.html" target="_blank">Lesson <span class="glyphicon glyphicon-new-window"></span></a></li>
+        <% } else { %>
+          <li><a href="navmenu.php">Lesson</a></li>
+        <% } %>
+          <li><a href="download.php">Download</a></li>
+          <li><a href="media_gallery.php">Gallery</a></li>
+          <li><a href="#userQuiz" data-toggle="modal">Quiz</a></li>
+          <li><a href="#userSurvey" data-toggle="modal">Survey</a></li>
+          <li><a href="" id="booster-link">Booster</a></li>
+        <% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %>
+          <li><a href="contributors.htm">Contributors</a></li>
+      <% } %>
+        </ul>
+      <% } %>
+      </div>
+    </div>
+  </nav>
+
+  <main id="master-container" class="container splash-background">
+    <section class="splash-overlay row">
+      <section class="lesson-titles center"><h1 id="lesson-title"><%= lessonTitle %></h1>
+        <!--<h2 id="lesson-subtitle"></h2>-->
+        <br>
+      </section>
+
+      <section id="lesson-midrow-items" class="row">
+        <div class="col-md-12">
+          <% if (lessonLang==='ES' ) { %>
+            <div class="center"><a href="navmenu.php" class="btn btn-lg btn-primary begin-lesson-button">Abrir la lección &rarr;</a></div>
+          <% } else if (lessonLang==='FR' ) { %>
+            <div class="center"><a href="navmenu.php" class="btn btn-lg btn-primary begin-lesson-button">Commencez la leçon &rarr;</a></div>
+          <% } else { %>
+            <div class="center"><a href="navmenu.php" class="btn btn-lg btn-primary begin-lesson-button">Begin Lesson &rarr;</a></div>
+          <% } %>
         </div>
-    </nav>
-    <main class="px-5 sm:px-8 h-auto">
-        <div class="min-h-[86.5vh] flex flex-col justify-center items-center text-center px-2 py-8">
-            <h1 class="text-4xl font-bold mb-4 sm:text-7xl"><%= lessonTitle %></h1>
-            <p class="text-lg text-muted-foreground mb-4"><%= lessonDesc %></p>
-            <p class="text-sm italic max-w-[600px] text-foreground mb-8">It is recommended that you take the lesson
-                pre-assessment before starting the lesson. This will help you understand the concepts that you need to
-                focus on.</p>
-            <div class="flex items-center gap-5"><a
-                    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 px-6"
-                    href="navmenu.php">Start Lesson →</a></div>
+      </section>
+
+
+      <section id="lesson-splash-credits" class="row">
+        <% if (lessonLang==='ES' ) { %>
+          <div id="lesson-producer" class="col-sm-6">Producido por The COMET® Program</div>
+        <% } else if (lessonLang==='FR' ) { %>
+          <div id="lesson-producer" class="col-sm-6">Produit par le programme COMET®</div>
+        <% } else { %>
+          <div id="lesson-producer" class="col-sm-6">Produced by The COMET&reg; Program</div>
+        <% } %>
+          <div id="lesson-image-credit" class="col-sm-6"><%= splashImageCredit %></div>
+      </section>
+
+
+      <!--FOOTER-->
+      <footer id="lesson-footer" class="row splash-footer">
+        <div class="col-md-8">
+          <% if (lessonLang==='ES' ) { %>
+            <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a> - Reservados todos los derechos.</p>
+          <% } else if (lessonLang==='FR' ) { %>
+              <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a> - Tous droits réservés.</p>
+          <% } else { %>
+            <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
+          <% } %>
         </div>
-    </main>
-    <footer class="w-full h-16 border-t">
-        <div
-            class="flex flex-wrap items-center justify-center sm:justify-between gap-4 sm:gap-0 w-full h-full px-2 sm:py-0 py-3 sm:px-4 lg:px-8 text-sm text-muted-foreground">
-            <p class="text-center">© <%= copyrightYear %>, <a class="font-semibold"
-                    href="https://www.meted.ucar.edu/">COMET MetEd</a> - All Rights Reserved.</p>
-            <div class="text-center hidden md:block"></div>
+        <div class="col-md-4">
+          <% if (lessonLang==='ES' ) { %>
+            <ul id="parent-links">
+              <li><a href="https://www.meted.ucar.edu/legal_es.htm">Avisos legales</a></li>
+              <li><a href="https://www.comet.ucar.edu/">COMET</a></li>
+              <li><a href="https://www.meted.ucar.edu/index_es.php">MetEd</a></li>
+            </ul>
+          <% } else if (lessonLang==='FR' ) { %>
+            <ul id="parent-links">
+              <li><a href="https://www.meted.ucar.edu/legal.htm">Mentions juridiques</a></li>
+              <li><a href="https://www.comet.ucar.edu/">COMET</a></li>
+              <li><a href="https://www.meted.ucar.edu/">MetEd</a></li>
+            </ul>
+          <% } else { %>
+            <ul id="parent-links">
+              <li><a href="https://www.meted.ucar.edu/legal.htm">Legal Notices</a></li>
+              <li><a href="https://www.comet.ucar.edu/">COMET</a></li>
+              <li><a href="https://www.meted.ucar.edu/">MetEd</a></li>
+            </ul>
+          <% } %>
         </div>
-    </footer>
+      </footer>
+  </main><!-- end master-container -->
+
+  <!-- MODAL PROMPTS ========================-->
+  <!-- Preassessment Prompt -->
+  <section id="beginModule" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div id="preassessment-message" class="modal-content">
+        <div class="modal-footer">
+          <div class="btn-group">
+            <a class="btn btn-default" href="navmenu.php"><% if (lessonLang==='ES' ) { %>Abrir la lección<% } else if (lessonLang==='FR' ) { %>Commencez la leçon<% } else { %>Begin Lesson<% } %></a>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="navmenu.php"><% if (lessonLang==='ES' ) { %>Lección regular &raquo;<% } else if (lessonLang==='FR' ) { %>Leçon interactive &raquo;<% } else { %>Regular Lesson &raquo;<% } %></a></li>
+              <li><a href="print.php"><% if (lessonLang==='ES' ) { %>Lección imprimible &raquo;<% } else if (lessonLang==='FR' ) { %>Leçon imprimable &raquo;<% } else { %>Printable Lesson &raquo;<% } %></a></li>
+            </ul>
+          </div>
+          <a id="pre-assessment-path" class="btn btn-success" href="#" target="_blank">
+            <% if (lessonLang==='ES' ) { %>Abrir la preevaluación &raquo;<% } else if (lessonLang==='FR' ) { %>Allez à la pré-évaluation &raquo;<% } else { %>Go to the pre-assessment &raquo;<% } %>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz and Survey Prompt -->
+  <div id="quiz-prompt"></div>
 </body>
 </html>
