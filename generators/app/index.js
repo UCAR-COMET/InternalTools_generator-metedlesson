@@ -2,12 +2,11 @@
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
-const grunt = require("grunt");
 
 module.exports = class extends Generator {
-/* ========= */
-/* PROMPTING */
-/* ========= */
+  /* ========= */
+  /* PROMPTING */
+  /* ========= */
   prompting() {
     // 1) Static Default Variablies
     const generatorYear = new Date().getFullYear();
@@ -15,7 +14,7 @@ module.exports = class extends Generator {
 
     // 2) Greeting
     this.log(yosay(`Let's generate a new ${chalk.blue("MetEd Lesson")}!`));
-    this.log(chalk.blue('v.3.0.1'));
+    this.log(chalk.blue("v.3.0.1"));
 
     // 3) Begin Prompts
     const prompts = [
@@ -93,9 +92,9 @@ module.exports = class extends Generator {
         default: false
       }
     ];
-/* ====================== */
-/* RETURN COLECTED VALUES */
-/* ====================== */
+    /* ====================== */
+    /* RETURN COLECTED VALUES */
+    /* ====================== */
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = props;
@@ -112,10 +111,7 @@ module.exports = class extends Generator {
       this.copyrightText = copyrightText;
 
       // Check additional prompts for LC
-      if (
-        props.hasAdditionalOptions &&
-        props.templateType !== "sl-xapi"
-      ) {
+      if (props.hasAdditionalOptions && props.templateType !== "sl-xapi") {
         return this.prompt(additionalPrompts).then(props => {
           // To access props from additional options
           // this.props = props;
@@ -128,9 +124,9 @@ module.exports = class extends Generator {
     });
   }
 
-/* =================== */
-/* WRITE OUT AND BUILD */
-/* =================== */
+  /* =================== */
+  /* WRITE OUT AND BUILD */
+  /* =================== */
   writing() {
     // INSTALL DEV DEPENDENCIES and BUILD PACKAGE.JSON
     const pkgJson = {
@@ -195,47 +191,52 @@ module.exports = class extends Generator {
                     } else */
 
     // LATEST CORE LEGACY SETUP
-    if ( this.props.templateType === "legacy-single" || this.props.templateType === "legacy-multiple" )
-    {
+    if (
+      this.props.templateType === "legacy-single" ||
+      this.props.templateType === "legacy-multiple"
+    ) {
       // Single-print and multi-print setup
       this.fs.copy(
         this.templatePath("extensions/grunt/newlesson/Gruntfile.js"),
         this.destinationPath("Gruntfile.js")
       );
       this.fs.copy(
-        this.templatePath("assets"),
+        this.templatePath("latest_core/assets"),
         this.destinationPath("build/assets")
       );
       this.fs.copy(
-        this.templatePath("bootstrap"),
+        this.templatePath("latest_core/bootstrap"),
         this.destinationPath("build/bootstrap")
       );
-      this.fs.copy(this.templatePath("css"), this.destinationPath("build/css"));
       this.fs.copy(
-        this.templatePath("jquery"),
+        this.templatePath("latest_core/css"),
+        this.destinationPath("build/css")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/jquery"),
         this.destinationPath("build/jquery")
       );
       this.fs.copy(
-        this.templatePath("ie-support"),
+        this.templatePath("latest_core/ie-support"),
         this.destinationPath("build/ie-support")
       );
       this.fs.copy(
-        this.templatePath("modernizr"),
+        this.templatePath("latest_core/modernizr"),
         this.destinationPath("build/modernizr")
       );
       this.fs.copy(
-        this.templatePath("navmenu.inc.php"),
+        this.templatePath("latest_core/navmenu/navmenu.inc.php"),
         this.destinationPath("build/navmenu.inc.php")
       );
       this.fs.copy(
-        this.templatePath("simple_html_dom.php"),
+        this.templatePath("latest_core/simple_html_dom.php"),
         this.destinationPath("build/simple_html_dom.php")
       );
 
       // MODS
       // index.htm
       this.fs.copyTpl(
-        this.templatePath("index.htm"),
+        this.templatePath("latest_core/index.htm"),
         this.destinationPath("build/index.htm"),
         {
           templateType: this.props.templateType,
@@ -250,20 +251,22 @@ module.exports = class extends Generator {
       );
       // Download.php
       this.fs.copyTpl(
-        this.templatePath("download.php"),
+        this.templatePath("latest_core/download.php"),
         this.destinationPath("build/download.php"),
         {
           templateType: this.props.templateType,
           lessonTitle: this.props.metedName,
           lessonID: this.props.metedID,
           lessonLang: this.props.metedLang,
+          lessonDesc: this.props.metedDesc,
+          lessonKeys: this.props.metedKeys,
           copyrightYear: this.generatorYear,
           pathStructure: this.structure
         }
       );
       // Media_gallery.php
       this.fs.copyTpl(
-        this.templatePath("media_gallery.php"),
+        this.templatePath("latest_core/originals/media_gallery.php"),
         this.destinationPath("build/media_gallery.php"),
         {
           templateType: this.props.templateType,
@@ -275,11 +278,14 @@ module.exports = class extends Generator {
       );
       // PageTemplate.php
       this.fs.copyTpl(
-        this.templatePath("pageTemplate.php"),
+        this.templatePath("latest_core/pageTemplate.php"),
         this.destinationPath("build/pageTemplate.php"),
         {
           templateType: this.props.templateType,
+          lessonTitle: this.props.metedName,
           lessonLang: this.props.metedLang,
+          lessonDesc: this.props.metedDesc,
+          lessonKeys: this.props.metedKeys,
           narratedSwitch: this.props.narratedLesson,
           copyrightYear: this.generatorYear
           // MultiPrint: this.props.multiLesson,
@@ -287,13 +293,13 @@ module.exports = class extends Generator {
       );
       // Navmenu.php
       this.fs.copyTpl(
-        this.templatePath("navmenu.php"),
+        this.templatePath("latest_core/navmenu/navmenu.php"),
         this.destinationPath("build/navmenu.php"),
         { lessonPath: this.props.metedPath }
       );
       // Print.php
       this.fs.copyTpl(
-        this.templatePath("print.php"),
+        this.templatePath("latest_core/print.php"),
         this.destinationPath("build/print.php"),
         {
           templateType: this.props.templateType,
@@ -320,7 +326,7 @@ module.exports = class extends Generator {
             }
           );
           this.fs.copy(
-            this.templatePath("navmenu.inc.php"),
+            this.templatePath("latest_core/navmenu/navmenu.inc.php"),
             this.destinationPath("build/navmenu.inc.php")
           );
           break;
@@ -335,7 +341,7 @@ module.exports = class extends Generator {
             }
           );
           this.fs.copy(
-            this.templatePath("navmenu.inc_es.php"),
+            this.templatePath("latest_core/navmenu/navmenu.inc.php"),
             this.destinationPath("build/navmenu.inc.php")
           );
           break;
@@ -350,15 +356,33 @@ module.exports = class extends Generator {
             }
           );
           this.fs.copy(
-            this.templatePath("navmenu.inc_fr.php"),
+            this.templatePath("latest_core/navmenu/navmenu.inc.php"),
             this.destinationPath("build/navmenu.inc.php")
           );
+          break;
+        default:
+          // Default to English if language not recognized
+          this.fs.copyTpl(
+            this.templatePath("extensions/lc-default/defaults.js"),
+            this.destinationPath("build/jquery/defaults.js"),
+            {
+              templateType: this.props.templateType,
+              lessonTitle: this.props.metedName,
+              lessonID: this.props.metedID,
+              lessonLang: this.props.metedLang
+            }
+          );
+          this.fs.copy(
+            this.templatePath("latest_core/navmenu/navmenu.inc.php"),
+            this.destinationPath("build/navmenu.inc.php")
+          );
+          break;
       }
 
       // MULTI-PRINT ONLY
       if (this.props.templateType === "multi-print") {
         this.fs.copyTpl(
-          this.templatePath("print.php"),
+          this.templatePath("latest_core/print.php"),
           this.destinationPath("build/print.php"),
           {
             templateType: this.props.templateType,
@@ -371,7 +395,7 @@ module.exports = class extends Generator {
           }
         );
         this.fs.copyTpl(
-          this.templatePath("print.php"),
+          this.templatePath("latest_core/print.php"),
           this.destinationPath("build/print_02.php"),
           {
             templateType: this.props.templateType,
@@ -384,7 +408,7 @@ module.exports = class extends Generator {
           }
         );
         this.fs.copyTpl(
-          this.templatePath("contributors.htm"),
+          this.templatePath("latest_core/contributors.htm"),
           this.destinationPath("build/contributors.htm"),
           {
             templateType: this.props.templateType,
@@ -483,8 +507,7 @@ module.exports = class extends Generator {
         this.templatePath("latest_core/navmenu/navmenu.inc.php"),
         this.destinationPath("build/navmenu.inc.php")
       );
-    }
-    else if (this.props.templateType === "sl-xapi") {
+    } else if (this.props.templateType === "sl-xapi") {
       this.fs.copy(
         this.templatePath("extensions/grunt/2025_xapi/Gruntfile.js"),
         this.destinationPath("Gruntfile.js")
@@ -532,7 +555,6 @@ module.exports = class extends Generator {
         this.templatePath("svelte_builder/_sample_pages"),
         this.destinationPath("prebuild/_sample_pages")
       );
-      
     }
   }
 
@@ -560,23 +582,32 @@ module.exports = class extends Generator {
     );
     // Run npm install && grunt on end
     this.on("end", function() {
-      if (!this.options["skip-install"]  && this.props.templateType !== "sl-xapi") {
+      if (
+        !this.options["skip-install"] &&
+        this.props.templateType !== "sl-xapi"
+      ) {
         this.npmInstall();
         this.spawnCommand("grunt", ["default"]);
       }
     });
 
     // Log Output
-    this.log( yosay( `${chalk.green( "I made the MetEd lesson scaffolding with the following settings:" )}`));
-    this.log("Lesson: " + `${chalk.red(this.props.metedName)}`);
-    this.log("ID: " + `${chalk.red(this.props.metedID)}`);
-    this.log("Language: " + `${chalk.red(this.props.metedLang)}`);
-    this.log("Copyright year: " + `${chalk.red(this.generatorYear)}`);
+    this.log(
+      yosay(
+        `${chalk.green(
+          "I made the MetEd lesson scaffolding with the following settings:"
+        )}`
+      )
+    );
+    this.log(`Lesson: ${chalk.red(this.props.metedName)}`);
+    this.log(`ID: ${chalk.red(this.props.metedID)}`);
+    this.log(`Language: ${chalk.red(this.props.metedLang)}`);
+    this.log(`Copyright year: ${chalk.red(this.generatorYear)}`);
     this.log(`${chalk.green("build")} folder READY`);
     this.log(yosay(`${chalk.green("Just running a few more tasks...")}`));
     // Log additional Articulate options
     if (this.articulatePages) {
-      this.log("Articulate pages:" + this.articulatePages);
+      this.log(`Articulate pages: ${this.articulatePages}`);
     }
   }
 };
