@@ -189,6 +189,104 @@ module.exports = class extends Generator {
                         }
                       );
                     } else */
+    // LATEST CORE 2025 UPDATE SETUP
+    if (this.props.templateType === "absorb-2025") {
+      // Base files
+      this.fs.copy(
+        this.templatePath("extensions/grunt/newlesson/Gruntfile.js"),
+        this.destinationPath("Gruntfile.js")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/assets"),
+        this.destinationPath("build/assets")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/2025_update/bootstrap"),
+        this.destinationPath("build/bootstrap")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/2025_update/css"),
+        this.destinationPath("build/css")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/2025_update/jquery"),
+        this.destinationPath("build/jquery")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/ie-support"),
+        this.destinationPath("build/ie-support")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/modernizr"),
+        this.destinationPath("build/modernizr")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/navmenu/navmenu.inc.php"),
+        this.destinationPath("build/navmenu.inc.php")
+      );
+      this.fs.copy(
+        this.templatePath("latest_core/simple_html_dom.php"),
+        this.destinationPath("build/simple_html_dom.php")
+      );
+
+      // MODS
+      // index.htm
+      this.fs.copyTpl(
+        this.templatePath("latest_core/2025_update/index.htm"),
+        this.destinationPath("build/index.htm"),
+        {
+          templateType: this.props.templateType,
+          lessonTitle: this.props.metedName,
+          lessonID: this.props.metedID,
+          lessonLang: this.props.metedLang,
+          lessonDesc: this.props.metedDesc,
+          lessonKeys: this.props.metedKeys,
+          copyrightYear: this.generatorYear,
+          splashImageCredit: this.copyrightText
+        }
+      );
+      // Download.php
+      this.fs.copyTpl(
+        this.templatePath("latest_core/2025_update/download.php"),
+        this.destinationPath("build/download.php"),
+        {
+          templateType: this.props.templateType,
+          lessonTitle: this.props.metedName,
+          lessonID: this.props.metedID,
+          lessonLang: this.props.metedLang,
+          lessonDesc: this.props.metedDesc,
+          lessonKeys: this.props.metedKeys,
+          copyrightYear: this.generatorYear,
+          pathStructure: this.structure
+        }
+      );
+      // PageTemplate.php
+      this.fs.copyTpl(
+        this.templatePath("latest_core/2025_update/pageTemplate.php"),
+        this.destinationPath("build/pageTemplate.php"),
+        {
+          templateType: this.props.templateType,
+          lessonTitle: this.props.metedName,
+          lessonLang: this.props.metedLang,
+          lessonDesc: this.props.metedDesc,
+          lessonKeys: this.props.metedKeys,
+          narratedSwitch: this.props.narratedLesson,
+          copyrightYear: this.generatorYear
+        }
+      );
+      // Media_gallery.php
+      this.fs.copyTpl(
+        this.templatePath("latest_core/media_gallery.php"),
+        this.destinationPath("build/media_gallery.php"),
+        {
+          templateType: this.props.templateType,
+          lessonTitle: this.props.metedName,
+          lessonID: this.props.metedID,
+          lessonLang: this.props.metedLang,
+          copyrightYear: this.generatorYear
+        }
+      );
+    }
 
     // LATEST CORE LEGACY SETUP
     if (
