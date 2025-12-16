@@ -6,14 +6,14 @@
   <meta name="author" content="UCAR/COMET">
   <meta name="dcterms.rightsHolder" content="UCAR/COMET">
   <meta name="robots" content="all">
-  <meta name="Description" content="<%= lessonDesc %>">
-  <meta name="keywords" content="<%= lessonKeys %>">
+  <meta name="Description" content="">
+  <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width">
   <meta name="viewport" content="initial-scale=1.0">
 <!-- =CORE TAGS START= -->
   <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/module-custom.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/module-absorb.css">
   <script src="jquery/jquery.min.js"></script>
   <script src="jquery/jquery-ui.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -23,17 +23,6 @@
 <!-- =CORE TAGS END= -->
   <script>
     var printVersion = false; // Specify Print View.  Only [true] for print.php
-    var lessonID = <%= lessonID %>; // Specify Lesson ID to add preassessment, or 0 for no preassessment.
-
-    // NOTE: Relative path breaks the download version!!!
-    var path = "https://meted.ucar.edu/education_training/lesson/" + lessonID + "/preassessment";
-    $(function () {
-      if (lessonID > 0) {
-        $('#pre-assessment-path').attr('href', path);
-        $('.begin-lesson-button').attr('data-toggle', 'modal');
-        $('.begin-lesson-button').attr('href', "#beginModule");
-      }
-    });
   </script>
 
 <!-- IE SUPPORT ==================================-->
@@ -58,16 +47,14 @@
         </button>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-      <% if (lessonLang==='ES' ) { %>
+      
+        <% if (lessonLang==='ES' ) { %>
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="">Inicio</a></li>
 <% if (templateType==='articulate-shell' ) { %> <li><a href="storyline/story.html" target="_blank">Lección <span class="glyphicon glyphicon-new-window"></span></a></li>
 <% } else { %>  <li><a href="navmenu.php">Lección</a></li><% } %>
           <li><a href="download.php">Descargar</a></li>
           <li><a href="media_gallery.php">Galería multimedia</a></li>
-          <li><a href="#userQuiz" data-toggle="modal">Prueba</a></li>
-          <li><a href="#userSurvey" data-toggle="modal">Encuesta</a></li>
-          <li><a href="" id="booster-link">Refuerzo</a></li>
 <% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %> <li><a href="contributors.htm">Colaboradores</a></li><% } %>
         </ul>
       <% } else if (lessonLang==='FR' ) { %>
@@ -80,9 +67,6 @@
         <% } %>
           <li><a href="download.php">Télécharger</a></li>
           <li><a href="media_gallery.php">Médiathèque</a></li>
-          <li><a href="#userQuiz" data-toggle="modal">Questionnaire</a></li>
-          <li><a href="#userSurvey" data-toggle="modal">Sondage</a></li>
-          <li><a href="" id="booster-link">Questions de suivi</a></li>
         <% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %>
           <li><a href="contributors.htm">Contributeurs</a></li>
       <% } %>
@@ -97,22 +81,20 @@
         <% } %>
           <li><a href="download.php">Download</a></li>
           <li><a href="media_gallery.php">Gallery</a></li>
-          <li><a href="#userQuiz" data-toggle="modal">Quiz</a></li>
-          <li><a href="#userSurvey" data-toggle="modal">Survey</a></li>
-          <li><a href="" id="booster-link">Booster</a></li>
         <% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %>
           <li><a href="contributors.htm">Contributors</a></li>
       <% } %>
         </ul>
       <% } %>
+      
       </div>
     </div>
   </nav>
 
   <main id="master-container" class="container splash-background">
     <section class="splash-overlay row">
-      <section class="lesson-titles center"><h1 id="lesson-title"><%= lessonTitle %></h1>
-        <!--<h2 id="lesson-subtitle"></h2>-->
+      <section class="lesson-titles center">
+        <h1 id="lesson-title"><%= lessonTitle %></h1>
         <br>
       </section>
 
@@ -124,7 +106,7 @@
             <div class="center"><a href="navmenu.php" class="btn btn-lg btn-primary begin-lesson-button">Commencez la leçon &rarr;</a></div>
           <% } else { %>
             <div class="center"><a href="navmenu.php" class="btn btn-lg btn-primary begin-lesson-button">Begin Lesson &rarr;</a></div>
-          <% } %>
+          <% } %>          
         </div>
       </section>
 
@@ -174,33 +156,9 @@
           <% } %>
         </div>
       </footer>
-  </main><!-- end master-container -->
+  </main>
 
   <!-- MODAL PROMPTS ========================-->
-  <!-- Preassessment Prompt -->
-  <section id="beginModule" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div id="preassessment-message" class="modal-content">
-        <div class="modal-footer">
-          <div class="btn-group">
-            <a class="btn btn-default" href="navmenu.php"><% if (lessonLang==='ES' ) { %>Abrir la lección<% } else if (lessonLang==='FR' ) { %>Commencez la leçon<% } else { %>Begin Lesson<% } %></a>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <span class="caret"></span>
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="navmenu.php"><% if (lessonLang==='ES' ) { %>Lección regular &raquo;<% } else if (lessonLang==='FR' ) { %>Leçon interactive &raquo;<% } else { %>Regular Lesson &raquo;<% } %></a></li>
-              <li><a href="print.php"><% if (lessonLang==='ES' ) { %>Lección imprimible &raquo;<% } else if (lessonLang==='FR' ) { %>Leçon imprimable &raquo;<% } else { %>Printable Lesson &raquo;<% } %></a></li>
-            </ul>
-          </div>
-          <a id="pre-assessment-path" class="btn btn-success" href="#" target="_blank">
-            <% if (lessonLang==='ES' ) { %>Abrir la preevaluación &raquo;<% } else if (lessonLang==='FR' ) { %>Allez à la pré-évaluation &raquo;<% } else { %>Go to the pre-assessment &raquo;<% } %>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Quiz and Survey Prompt -->
   <div id="quiz-prompt"></div>
 </body>

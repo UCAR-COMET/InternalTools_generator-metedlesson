@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoColor Product Imagery: Applications Over Land and Ocean</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1.0">
+<!-- =CORE TAGS START= -->
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script src="jquery/jquery-plugins.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="modernizr/modernizr.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/meted-player/mediaelementplayer.min.css">
+    <script src="jquery/meted-player/mediaelement-and-player.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/fancybox/fancybox.min.css">
+    <script src="jquery/apps/fancybox/fancybox.min.js"></script>
+    <script src="jquery/apps/elevatezoom/elevatezoom.min.js"></script>
+    <script src="jquery/apps/drag/drag.js"></script>
+    <script src="jquery/apps/draw/draw.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/image-sweep/image-sweep.css">
+    <script src="jquery/apps/image-sweep/image-sweep.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/module-absorb.css">
+    <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
+    <script type="text/javascript" src="jquery/defaults.js"></script>
+    <script type="text/javascript" src="jquery/module-custom.js"></script>
+<!-- =CORE TAGS END= -->
+    <script type="text/javascript">
+    var printVersion = false; // Specify Print View.  [true] for PRINT, or [false] for DYNAMIC content.
+    </script>
+
+<!-- IE SUPPORT ===================================-->
+<!--[if lte IE 9]>
+    <script type="text/javascript" src="jquery/apps/draw/excanvas.js"></script>
+    <script type="text/javascript" src="ie-support/respond.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="ie-support/ie-support.css" />
+<![endif]-->
+</head>
+<body>
+    <!--NAVBAR-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid" style="max-width: 1200px;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+            
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.htm">Home</a></li>
+                    <li><a href="navmenu.php">Lesson</a></li>
+                    <li><a href="media_gallery.php">Gallery</a></li>  
+                    <li class="active"><a href="contributors.htm">Contributors</a></li>              
+                </ul>
+            
+            </div>
+        </div>
+    </nav>
+
+    <main id="master-container" class="container-fluid" style="max-width: 1200px;">
+        <div class="row">
+            
+
+            <section id="lesson-content" class="col-sm-9">
+                <div id="page_contributors" class="page">
+                        <h3 class="sub_head">Contributors</h3>
+                        <div id="comet-sponsors">
+                            <h4 id="sponsors">COMET Sponsors</h4>
+                            <p>MetEd and the COMET® Program are a part of the <a href="https://www.ucar.edu/community-programs">University Corporation for Atmospheric Research's
+                                    (UCAR's) Community Programs (UCP)</a> and are sponsored by</p>
+                            <ul>
+                                <li><a href="https://www.weather.gov/about/" target="_blank" rel="noreferrer">NOAA's National Weather
+                                        Service (NWS)</a><br>with additional funding by:</li>
+                                <li><a href="http://www.aihec.org/" target="_blank" rel="noopener noreferrer">American Indian Higher
+                                        Education Consortium (AIHEC)</a></li>
+                                <li><a href="https://www.eumetsat.int/" target="_blank" rel="noreferrer">European Organisation for the
+                                        Exploitation of Meteorological Satellites (EUMETSAT)</a></li>
+                                <li><a href="http://weather.gc.ca/" target="_blank" rel="noreferrer">Meteorological Service of Canada
+                                        (MSC)</a></li>
+                                <li><a href="http://www.nesdis.noaa.gov/" target="_blank" rel="noreferrer">NOAA's National Environmental
+                                        Satellite, Data and Information Service (NESDIS)</a></li>
+                                <li><a href="http://www.ngs.noaa.gov/" target="_blank" rel="noreferrer">NOAA's National Geodetic Survey
+                                        (NGS)</a></li>
+                                <li><a href="https://www.ncm.gov.sa/ar/Pages/default.aspx" target="_blank" rel="noopener noreferrer">National Center for Meteorology (NCM) of Saudi Arabia</a></li>
+                                <li><a href="http://www.nsf.gov" target="_blank" rel="noreferrer">National Science Foundation (NSF)</a>
+                                </li>
+                                <li><a href="https://www.usaid.gov/" target="_blank" rel="noopener noreferrer">US Agency for
+                                        International Development (USAID)</a></li>
+                                <li><a href="https://www.usgs.gov/mission-areas/water-resources" target="_blank" rel="noopener noreferrer">US Geological Survey (USGS) Water Resources Mission Area</a></li>
+                                <li><a href="https://www.worldbank.org/en/home" target="_blank" rel="noopener noreferrer">World Bank
+                                        (WB)</a></li>
+                                <li><a href="https://public.wmo.int/en" target="_blank" rel="noreferrer">World Meteorological
+                                        Organization (WMO)</a></li>
+                            </ul>
+                            <p>To learn more about us, please visit the <a href="http://www.comet.ucar.edu">COMET website</a>.</p>
+                            <h4 id="contributors">Project Contributors</h4>
+                            <h5>Project Lead and Scientist</h5>
+                            <ul>
+                                <li>Patick Dills - UCAR/COMET</li>
+                            </ul>
+                            
+                            <h5>Project Co-Lead / Instructional Design</h5>
+                            <ul>
+                                <li>Amy Stevermer - UCAR/COMET</li>
+                            </ul>
+                            
+                            <h5>Scientific Advisors / Reviewers</h5>
+                            <ul>
+                                <li>Dan Lindsey - NOAA/NESDIS GOES-R Program Scientist</li>
+                                <li>William Line - NOAA/NESDIS Physical Scientist & Imagery Product Lead</li>
+                                <li>Curtis Seaman - CIRA/Colorado State University Research Scientist</li>
+                            </ul>
+
+                            <h5>Program Management</h5>
+                            <ul>
+                                <li>Amy Stevermer - UCAR/COMET</li>
+                            </ul>
+                            <h5>Graphics and Multimedia Development</h5>
+                            <ul>
+                                <li>Patrick Dills - UCAR/COMET</li>
+                                <li>Steve Deyo - UCAR/COMET</li>
+                            </ul>
+                            <h5>Multimedia Authoring/Interface Design</h5>
+                            <ul>
+                                <li>Gary Pacheco - UCAR/COMET</li>
+                            </ul>
+                        </div>
+                        <div id="comet-staff">
+                            <h4>COMET Staff, November 2025</h4>
+                            <h5>Director's Office</h5>
+                            <ul>
+                                <li>Dr. Elizabeth Mulvihill, Director</li>
+                                <li>Dr. Wendy Gram, Deputy Director</li>
+                                <li>Dr. Paul Kucera, Assistant Director International Programs</li>
+                            </ul>
+                            <h5>Business Administration</h5>
+                            <ul>
+                                <li>Lorrie Alberta, Administrator</li>
+                                <li>Alayne Benson, Communications Specialist</li>
+                                <li>Katie Chapman, Administrator</li>
+                                <li>Tara Torres, Program Coordinator</li>
+                            </ul>
+                            <h5>IT Services</h5>
+                            <ul>
+                                <li>Bob Bubon, Systems Administrator</li>
+                                <li>Malte Winkler, Software Engineer</li>
+                            </ul>
+                            <h5>Instructional Services</h5>
+                            <ul>
+                                <li>Laurel Ozersky, Instructional Designer</li>
+                                <li>Sarah Ross-Lazarov, Instructional Designer</li>
+                                <li>Tsvetomir Ross-Lazarov, Instructional Designer</li>
+                            </ul>
+                            <h5>International Programs</h5>
+                            <ul>
+                                <li>Kwabena Denkyi (Kwa), Project Manager</li>
+                                <li>William Nicewonger, Instrument Engineer</li>
+                                <li>Kathryn Payne, Project Manager</li>
+                                <li>David Russi, Translations Coordinator</li>
+                                <li>Martin Steinson, Project Manager</li>
+                            </ul>
+                            <h5>Production and Media Services</h5>
+                            <ul>
+                                <li>Corbin Jackson, Translator / Multimedia Specialist</li>
+                                <li>Dolores Kiessling, Software Engineer</li>
+                                <li>Gary Pacheco, Web Designer and Developer</li>
+                                <li>Tyler Winstead, Web Developer</li>
+                            </ul>
+                            <h5>Science Group</h5>
+                            <ul>
+                                <li>Patrick Dills, Meteorologist</li>
+                                <li>Bryan Guarente, Instructional Designer/Meteorologist</li>
+                                <li>Adam Hirsch, Meteorologist</li>
+                                <li>Erin Houlihan, Hydrologist</li>
+                                <li>Andrea Smith, Meteorologist</li>
+                                <li>Brianna Smith, Meteorologist</li>
+                                <li>Amy Stevermer, Scientist/Instructional Designer </li>
+                                <li>Vanessa Vincente, Meteorologist</li>
+                                <li>Rebecca Zieber, Oceanographer/Hydrologist</li>
+                            </ul>
+                            <h5>NOAA/National Weather Service - Forecast Decision Training Division</h5>
+                            <ul>
+                                <li>Kevin Scharfenberg, Division Chief</li>
+                                <li>Jason Jordan, Physical Scientist</li>
+                                <li>Ross Van Til, Meteorologist</li>
+                                <li>Matt Paulus, Research Associate</li>
+                                <li>Travis Enzensperger, Research Associate</li>
+                            </ul>
+                        </div>
+                    </div>
+                
+            </section>
+        </div>
+
+        <!--FOOTER-->
+        <footer id="lesson-footer" class="row">
+            <div class="col-md-8">
+            
+                <p id="lesson-copyright">&copy; 2025, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
+            
+            </div>
+            <div class="col-md-4">
+            
+                <ul id="parent-links">
+                    <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Legal Notices</a></li>
+                    <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
+                    <li><a href="https://www.meted.ucar.edu/" target="_blank">MetEd</a></li>
+                </ul>
+            
+            </div>
+        </footer>
+    </main>
+
+    <!-- Quiz/Survey Prompts -->
+    <div id="quiz-prompt"></div>
+</body>
+</html>

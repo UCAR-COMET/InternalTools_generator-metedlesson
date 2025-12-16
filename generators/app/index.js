@@ -22,8 +22,8 @@ module.exports = class extends Generator {
         type: "list",
         name: "templateType",
         message: "Choose the lesson template:",
-        choices: ["legacy-single", "legacy-multiple", "sl-xapi"],
-        default: "Latest Core"
+        choices: ["absorb-2025", "legacy-single", "legacy-multiple", "sl-xapi"],
+        default: "absorb-2025"
       },
       {
         type: "list",
