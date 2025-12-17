@@ -207,17 +207,17 @@ $mm = new MediaItemManager();
     <footer id="module-footer" class="row">
         <div class="col-md-10 col-sm-12">
         <% if (lessonLang === 'ES') { %>
-            <p class="footer-text">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a><br>Reservados todos los derechos. <a href="https://meted.ucar.edu/legal_es.htm">Avisos legales</a></p>
+            <p class="footer-text">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a><br>Reservados todos los derechos. <a href="https://meted.ucar.edu/legal" target="_blank">Avisos legales</a></p>
         <% } else if (lessonLang === 'FR') { %>
-            <p class="footer-text">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a><br>Tous droits réservés. <a href="https://meted.ucar.edu/legal.htm">Mentions juridiques</a></p>
+            <p class="footer-text">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a><br>Tous droits réservés. <a href="https://meted.ucar.edu/legal" target="_blank">Mentions juridiques</a></p>
         <% } else { %>
-            <p class="footer-text">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/">The University Corporation for Atmospheric Research</a><br>All Rights Reserved. <a href="https://meted.ucar.edu/legal.htm">Legal notices</a></p>
+            <p class="footer-text">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a><br>All Rights Reserved. <a href="https://meted.ucar.edu/legal" target="_blank">Legal notices</a></p>
         <% } %>
         </div>
         <div class="col-md-2 hidden-sm hidden-xs">
             <ul class="footer-links list-unstyled">
-                <li><a href="https://www.meted.ucar.edu/"><span class="glyphicon glyphicon-link"></span>MetEd</a></li>
-                <li><a href="https://comet.ucar.edu"><span class="glyphicon glyphicon-link"></span>COMET</a></li>
+                <li><a href="https://www.meted.ucar.edu/" target="_blank"><span class="glyphicon glyphicon-link"></span>MetEd</a></li>
+                <li><a href="https://comet.ucar.edu" target="_blank"><span class="glyphicon glyphicon-link"></span>COMET</a></li>
             </ul>
         </div>
     </footer>

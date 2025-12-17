@@ -292,6 +292,20 @@ module.exports = class extends Generator {
         this.destinationPath("build/navmenu.php"),
         { lessonPath: this.props.metedPath }
       );
+      // Print.php
+      this.fs.copyTpl(
+        this.templatePath("latest_core/print.php"),
+        this.destinationPath("build/print.php"),
+        {
+          templateType: this.props.templateType,
+          lessonTitle: this.props.metedName,
+          lessonID: this.props.metedID,
+          lessonDesc: this.props.metedDesc,
+          lessonKeys: this.props.metedKeys,
+          lessonLang: this.props.metedLang,
+          copyrightYear: this.generatorYear
+        }
+      );
     }
 
     // LATEST CORE LEGACY SETUP
