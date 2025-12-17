@@ -276,7 +276,7 @@ module.exports = class extends Generator {
       );
       // Media_gallery.php
       this.fs.copyTpl(
-        this.templatePath("latest_core/media_gallery.php"),
+        this.templatePath("latest_core/2025_update/media_gallery.php"),
         this.destinationPath("build/media_gallery.php"),
         {
           templateType: this.props.templateType,
