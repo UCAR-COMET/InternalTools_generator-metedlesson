@@ -286,6 +286,12 @@ module.exports = class extends Generator {
           copyrightYear: this.generatorYear
         }
       );
+      // Navmenu.php
+      this.fs.copyTpl(
+        this.templatePath("latest_core/navmenu/navmenu.php"),
+        this.destinationPath("build/navmenu.php"),
+        { lessonPath: this.props.metedPath }
+      );
     }
 
     // LATEST CORE LEGACY SETUP
