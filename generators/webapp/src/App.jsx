@@ -40,7 +40,7 @@ function App() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">MetEd Lesson Generator</h1>
-                <p className="text-sm text-gray-600">Generate Latest Core 2026 lessons with ease</p>
+                <p className="text-sm text-gray-600">Generate the lesson base template files</p>
               </div>
             </div>
             <div className="text-sm text-gray-500">

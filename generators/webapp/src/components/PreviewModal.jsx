@@ -49,7 +49,7 @@ const PreviewModal = ({ data, onClose, onDownload }) => {
                   <p><strong>Lesson:</strong> {data.metadata?.metedName}</p>
                   <p><strong>ID:</strong> {data.metadata?.metedID}</p>
                   <p><strong>Language:</strong> {data.metadata?.metedLang}</p>
-                  <p><strong>Template:</strong> Latest Core 2026</p>
+                  <p><strong>Template:</strong> Latest Core</p>
                 </div>
               </div>
             )}

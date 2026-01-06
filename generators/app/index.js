@@ -220,10 +220,10 @@ module.exports = class extends Generator {
         this.templatePath("latest_core/modernizr"),
         this.destinationPath("build/modernizr")
       );
-      /* This.fs.copy(
+      this.fs.copy(
         this.templatePath("latest_core/navmenu.inc.php"),
         this.destinationPath("build/navmenu.inc.php")
-      ); */
+      );
       this.fs.copy(
         this.templatePath("latest_core/simple_html_dom.php"),
         this.destinationPath("build/simple_html_dom.php")
@@ -342,10 +342,10 @@ module.exports = class extends Generator {
         this.templatePath("latest_core/modernizr"),
         this.destinationPath("build/modernizr")
       );
-      /* This.fs.copy(
+      this.fs.copy(
         this.templatePath("latest_core/navmenu.inc.php"),
         this.destinationPath("build/navmenu.inc.php")
-      ); */
+      );
       this.fs.copy(
         this.templatePath("latest_core/simple_html_dom.php"),
         this.destinationPath("build/simple_html_dom.php")

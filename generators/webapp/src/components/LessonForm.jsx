@@ -54,9 +54,9 @@ const LessonForm = ({ onSubmit, isLoading }) => {
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-comet-500 focus:border-transparent"
           disabled
         >
-          <option value="absorb-2025">Latest Core 2026</option>
+          <option value="latest_core">Latest Core (Absorb LMS Ready)</option>
         </select>
-        <p className="mt-1 text-xs text-gray-500">Currently only Latest Core 2026 is supported</p>
+        <p className="mt-1 text-xs text-gray-500">Currently only Latest Core supported</p>
       </div>
 
       {/* Language */}

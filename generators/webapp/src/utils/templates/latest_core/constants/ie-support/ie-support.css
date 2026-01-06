@@ -1,0 +1,17 @@
+/*===== METED ELEMENTS ========*/
+#table-of-contents {}
+#module-wrapper {}
+#module-sidebar { z-index:500 !important; }
+#module-content {}
+#module-footer {}
+/*===== BOOTSTRAP ELEMENTS ======*/
+img.img-responsive, img.center-block { width:auto; height:auto; }
+
+/* SPLASH PAGE ITEMS */
+.module-splash-nav a:hover { color:#1500D9 !important; }
+
+/* MEDIA GALLERY ITEMS */
+.gallery-container img { height:130px !important; max-height:130px !important; }
+
+/* HTML5 Video Player */
+.mejs-fullscreen-button { visibility:hidden !important; display:none !important; }

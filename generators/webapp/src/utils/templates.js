@@ -1,4 +1,4 @@
-// Template content for the Latest Core 2026 index.htm file
+// Template content for the Latest Core index.htm file
 export const indexTemplate = `<!doctype html>
 <html lang="{{lang}}">
 <head>

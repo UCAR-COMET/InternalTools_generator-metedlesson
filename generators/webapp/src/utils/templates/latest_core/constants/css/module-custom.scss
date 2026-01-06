@@ -1,0 +1,840 @@
+//* =========================================== */
+//* === LC MODULE-CUSTOM  ===================== */
+//* =========================================== */
+
+//* HTML ELEMENTS */
+$body-background:		#fff;
+$body-font: 			"Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$heading-font: 			"futurapro-normal";
+$link-color:			#0A64AC;
+$link-color-active: 	#2B73D9;
+
+//* Module Colors */
+$module-color1: 		$link-color-active;
+$module-color2: 		#353535;
+$module-color3: 		#535353;
+$module-color4: 		#353535;
+
+$module-title-color:	#fff; //* Module Title */
+$module-title-shadow:	1px 1px 0px #000, 2px 2px 0px #000;
+$module-title-fontsize: 40px;
+$module-title-lh: 		40px;
+
+//* Top Navigation Bars */
+$topnav-background: 	$module-color2;
+$topnav-color: 			#fff;
+
+$topbutton-color: 		#ccc; //* Back to top button color */
+$topbutton-hover: 		$module-color4;
+
+/* other */
+$caption-background:	#d7d7d7;
+$textselect-color: 		#fff;
+$textselect-background: #300CD2;
+
+//* WEB-FONTS */
+$font-stack1: "futurapro-normal";
+@mixin font-stack1($font-src: 'fonts/futurapro/futurapro-normal'){
+	font-family: "#{$font-stack1}";
+	src: url('#{$font-src}.eot');
+	src: url('#{$font-src}.eot?#iefix') format('embedded-opentype'),
+		 url('#{$font-src}.woff') format('woff'),
+		 url('#{$font-src}.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+$font-stack2: "futurapro-bold";
+@mixin font-stack2($font-src: 'fonts/futurapro/futurapro-bold'){
+	font-family: "#{$font-stack2}";
+	src: url('#{$font-src}.eot');
+	src: url('#{$font-src}.eot?#iefix') format('embedded-opentype'),
+		 url('#{$font-src}.woff') format('woff'),
+		 url('#{$font-src}.ttf') format('truetype');
+	font-style: normal;
+	font-weight: bold;
+}
+
+//* BASE COLORS */
+$default-color: #555;
+$primary-color: $module-color1;
+$success-color: #8FCE44;
+$warning-color: #FFAF3C;
+$danger-color: #FA5858;
+
+
+/* =============================================== */
+/* === 1.0 HTML RESET ============================ */
+body {
+	background-color: $body-background;
+	min-width: 320px;
+}
+
+/* WebFont Stack 1 - Normal Weight */
+@font-face {
+	@include font-stack1();
+}
+/* WebFont Stack 2 - Bold, Black, or Heavy */
+@font-face {
+	@include font-stack2();
+}
+
+/* Links */
+a {
+	color: $link-color;
+	text-decoration: none;
+}
+a:hover,
+a:focus {
+	color: $link-color-active;
+	text-decoration: underline;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+	font-family: $heading-font, $body-font;
+}
+/* Text Selection */
+::-moz-selection {
+	color: $textselect-color;
+	background: $textselect-background;
+}
+::selection {
+	color: $textselect-color;
+	background: $textselect-background;
+}
+
+
+/* ========================================================== */
+/* === 2.0 BOOTSTRAP COMPONENTS ============================= */
+
+/* === PAGE NAVIGATOR (pager) =============================== */
+.pager li > a,
+.pager li > span {
+  color: $module-color2;
+  background-color: transparent;
+  border: 2px solid $module-color2;
+}
+.pager li > a:hover,
+.pager li > a:focus {
+  background-color: $module-color2;
+  color: #fff;
+}
+
+/* === DROPDOWN MENUS ======================================= */
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  background-color: $module-color2;
+}
+
+/* === PILLS ================================================ */
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  background-color: $module-color3;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: $module-color1;
+    color: #fff;
+}
+
+
+/* === BUTTONS ================================================ */
+.btn {
+
+	background: #555;
+	color: #fff;
+	border: 2px solid $module-color1;
+	border-radius: 2.5em;
+	font-family: $heading-font;
+	transition: 0.2s ease-in-out all;
+	box-shadow: none;
+	text-shadow: none;
+}
+.btn:hover,
+.btn:active,
+.btn:focus {
+	background: $module-color2;
+	border: 2px solid $module-color2;
+}
+
+/* === DEFAULT BUTTON ======================================== */
+.btn-default {
+  background-color: #555;
+  border-color: #555;
+}
+.btn-default:hover,
+.btn-default:focus {
+  background-color: #333;
+	border-color: #333;
+	color: #fff;
+  background-position: 0 -15px;
+}
+.btn-default:active,
+.btn-default.active {
+  background-color: #333;
+  border-color: #333;
+}
+.btn-default:disabled,
+.btn-default[disabled] {
+  background-color: #D7D7D7;
+  background-image: none;
+  border-color: #ddd;
+}
+
+.btn-default:disabled:hover,
+.btn-default[disabled]:hover {
+  background-color: #D7D7D7;
+  background-image: none;
+  border-color: #ddd;
+}
+
+/* === PRIMARY BUTTON ======================================== */
+.btn-primary {
+  background-color: $primary-color;
+  /*border-color: $module-color1;*/
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: darken($primary-color, 12%);
+	border-color: darken($primary-color, 12%);
+  background-position: 0 -15px;
+}
+.btn-primary:active,
+.btn-primary.active {
+  background-color: darken($primary-color, 12%);
+  border-color: darken($primary-color, 12%);
+}
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  background-color: lighten($primary-color, 20%);
+  background-image: none;
+  border-color: lighten($primary-color, 20%);
+}
+
+/* === SUCCESS BUTTON ======================================== */
+.btn-success {
+  background-color: $success-color;
+  border-color: $success-color;
+}
+.btn-success:hover,
+.btn-success:focus {
+	background-color: darken($success-color, 10%);
+	border-color: darken($success-color, 10%);
+  background-position: 0 -15px;
+}
+.btn-success:active,
+.btn-success.active {
+	background-color: darken($success-color, 10%);
+	border-color: darken($success-color, 10%);
+}
+.btn-success:disabled,
+.btn-success[disabled] {
+  background-color: #D7D7D7;
+  background-image: none;
+  border-color: #D7D7D7;
+}
+
+
+/* === WARNING BUTTON ======================================== */
+.btn-warning {
+  background-color: $warning-color;
+  border-color: $warning-color;
+}
+.btn-warning:hover,
+.btn-warning:focus {
+	background-color: darken($warning-color, 10%);
+	border-color: darken($warning-color, 10%);
+  background-position: 0 -15px;
+}
+.btn-warning:active,
+.btn-warning.active {
+	background-color: darken($warning-color, 10%);
+	border-color: darken($warning-color, 10%);
+}
+.btn-warning:disabled,
+.btn-warning[disabled] {
+  background-color: #D7D7D7;
+  background-image: none;
+  border-color: #D7D7D7;
+}
+
+/* === DANGER BUTTON ======================================== */
+.btn-danger {
+  background-color: $danger-color;
+  border-color: $danger-color;
+}
+.btn-danger:hover,
+.btn-danger:focus {
+	background-color: darken($danger-color, 6%);
+	border-color: darken($danger-color, 6%);
+  background-position: 0 -15px;
+}
+.btn-danger:active,
+.btn-danger.active {
+	background-color: darken($danger-color, 6%);
+	border-color: darken($danger-color, 6%);
+}
+.btn-danger:disabled,
+.btn-danger[disabled] {
+  background-color: #D7D7D7;
+  background-image: none;
+  border-color: #D7D7D7;
+}
+
+/* === DEFAULT PANEL ======================================== */
+.panel-default {
+    border-color: lighten($default-color, 50%);
+}
+.panel-default > .panel-heading {
+    color: #fff;
+    background-color: $default-color;
+    border-color: $default-color;
+}
+
+/* === PRIMARY PANEL ======================================== */
+.panel-primary {
+    border-color: $module-color1;
+}
+.panel-primary > .panel-heading {
+    color: #fff;
+    background-color: $module-color1;
+    border-color: $module-color1;
+}
+
+/* === SUCCESS PANEL ======================================== */
+.panel-success {
+    border-color: $success-color;
+}
+.panel-success > .panel-heading {
+    color: #fff;
+    background-color: $success-color;
+    border-color: $success-color;
+}
+
+/* === WARNING PANEL ======================================== */
+.panel-warning {
+    border-color: $warning-color;
+}
+.panel-warning > .panel-heading {
+    color: #fff;
+    background-color: $warning-color;
+    border-color: $warning-color;
+}
+
+/* === DANGER PANEL ======================================== */
+.panel-danger {
+    border-color: $danger-color;
+}
+.panel-danger > .panel-heading {
+    color: #fff;
+    background-color: $danger-color;
+    border-color: $danger-color;
+}
+
+
+.panel-title > a:hover,
+.panel-title > a:active,
+.panel-title > a:focus {
+	color: #fff;
+}
+
+.msdb-error {
+	margin-bottom: 0px;
+	background: darken($danger-color, 18%);
+	font-size: 80%;
+}
+.msdb-error span {
+	color: #fff !important;
+}
+.msdb-error a {
+	color: #000;
+	text-decoration: underline;
+}
+.msdb-error a:hover,
+.msdb-error a:active,
+.msdb-error a:focus {
+	color: #000;
+	text-decoration: none;
+}
+
+
+/* ========================================================== */
+/* === 3.0 LATEST CORE 2 COMPONENTS ========================= */
+
+/* === MODULE HEADER ======================================== */
+#module-title {
+	color: $module-title-color;
+	font-family: $font-stack2;
+	font-size: $module-title-fontsize;
+	line-height: $module-title-lh;
+	text-shadow: $module-title-shadow;
+	padding-top: 25px;
+}
+#module-title small, .module-title small {
+	color: $module-color3;
+	font-weight: normal !important;
+}
+#splash-page .module-title {
+	font-size: 2 * $module-title-fontsize - 8px;
+	line-height: 2 * $module-title-lh - 8px;
+}
+/* Module Title Media Queries */
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+#module-title {
+	font-size: $module-title-fontsize + 6px;
+	line-height: $module-title-lh + 6px;
+}
+#splash-page .module-title {
+	font-size: 1.6 * $module-title-fontsize - 8px;
+	line-height: 1.6 * $module-title-fontsize - 8px;
+}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+#module-title{
+	font-size: $module-title-fontsize + 8px;
+	line-height: $module-title-lh + 8px;
+}
+#splash-page .module-title {
+	font-size: 1.4 * $module-title-fontsize + 8px;
+	line-height: 1.4 * $module-title-fontsize + 8px;
+}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+#module-title {
+	font-size: $module-title-fontsize + 12px;
+	line-height: $module-title-lh + 12px;
+	/* text-align:left;
+	padding-left:16px; */
+}
+#splash-page .module-title {
+	font-size: 2 * $module-title-fontsize - 5px;
+	line-height: 2 * $module-title-fontsize - 5px;
+}
+}
+
+#module-credit {
+	color: $module-title-color;
+	font-family: $heading-font;
+	text-shadow: $module-title-shadow;
+	font-size: 12px;
+}
+
+
+
+/* === MODULE NAVIGATION MENU =============================== */
+.module-nav li.active a,
+.module-nav li.active a:focus,
+.module-nav li.active a:hover {
+	background-color: $module-color2;
+}
+
+/* === MODULE UNIT/CHAPTER DROPDOWN MENU ==================== */
+.unit-header {
+	background: $topnav-background;
+	color: $topnav-color;
+}
+#collapsible-toc .panel-default .panel-heading {
+	background: $topnav-background;
+	border-top-right-radius: 0px !important;
+	border-top-left-radius: 0px !important;
+}
+#collapsible-toc .panel-default .panel-heading a,
+#collapsible-toc .panel-default .panel-heading a:hover,
+#collapsible-toc .panel-default .panel-heading a:active {
+	color: $topnav-color !important;
+}
+#collapsible-toc > .panel-default {
+}
+
+/* === BACK TO TOP BUTTON =================================== */
+.back-top a {
+	color: $topbutton-color;
+	text-decoration: none;
+}
+.back-top a:hover {
+	color: $topbutton-hover;
+	text-decoration: none;
+}
+
+/* === IMAGE AND TEXT CAPTIONS ============================== */
+.image-caption, .text-caption {
+	background: $caption-background;
+}
+
+/* === SPLASH PAGE ============================== */
+body#splash-page {
+	background-color: $body-background;
+}
+#splash-page .footer-text a {
+	color: $module-color1;
+}
+#module-topbanner {
+	background-image: url("../assets/module-banner.jpg");
+	background-repeat: no-repeat;
+	background-size: 1168px 170px;
+	background-position:top center;
+}
+/* ========================================================== */
+/* === 4.0 MODULE-SPECIFIC COMPONENTS ======================= */
+/* Swatch test */
+#module-color-1 {
+	background-color: $module-color1;
+}
+#module-color-2 {
+	background-color: $module-color2;
+}
+#module-color-3 {
+	background-color: $module-color3;
+}
+#module-color-4 {
+	background-color: $module-color4;
+}
+#module-color-1, #module-color-2, #module-color-3, #module-color-4 {
+	border-color: #ddd;
+}
+#module-color-1:hover, #module-color-2:hover, #module-color-3:hover, #module-color-4:hover {
+	border-color: #000;
+}
+
+/* ========================================================== */
+/* === LC3 COMPONENTS ======================================= */
+body {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
+background: #fff; /* Old browsers */
+/*background: -moz-radial-gradient(center, ellipse cover,  #7d7e7d 0%, #0e0e0e 100%) fixed; /* FF3.6-15 */
+/*background: -webkit-radial-gradient(center, ellipse cover,  #7d7e7d 0%,#0e0e0e 100%) fixed; /* Chrome10-25,Safari5.1-6 */
+/*background: radial-gradient(ellipse at center,  #7d7e7d 0%,#0e0e0e 100%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.navbar-inverse {
+background-color: #efefef;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e5e5+0,ffffff+50,e5e5e5+100 */
+//background: #e5e5e5; /* Old browsers */
+//background: -moz-linear-gradient(top,  #e5e5e5 0%, #ffffff 50%, #e5e5e5 100%); /* FF3.6-15 */
+//background: -webkit-linear-gradient(top,  #e5e5e5 0%,#ffffff 50%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
+//background: linear-gradient(to bottom,  #e5e5e5 0%,#ffffff 50%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #777;
+}
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: $module-color1;
+}
+
+.chapter_description {
+	display: none;
+}
+.sidebar-toc {
+	margin-top: -10px;
+}
+.lc-docs-sidenav {
+	padding-left: 0px;
+	font-size: 12px;
+}
+.menu_here {
+	border-right: none;
+}
+.sidebar-toc ul li > a.menu_here {
+	background-color: darken($module-color1, 20%);
+	color: #fff;
+}
+.sidebar-toc hr {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+#tab_nav {
+	font-size: 13px;
+	margin-left: -1px;
+	margin-right: -1px;
+}
+#tab_nav > li > a {
+	white-space: normal;
+	line-height: 1.1;
+}
+.lc-docs-sidenav > li a {
+    padding: 2px 8px;
+}
+.lc-docs-sidenav ul {
+	margin-left: 12px;
+}
+
+#lesson-sidebar-title {
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+#lesson-sidebar-unit-title {
+	font-size: 15px;
+}
+
+#lesson-title {
+	font-size: $module-title-fontsize * 0.85;
+	line-height: $module-title-lh * 0.85;
+	margin-top: 10px;
+	color: $module-title-color;
+}
+#lesson-subtitle {
+	font-size: $module-title-fontsize * 0.5;
+	margin-top: -12px;
+	color: lighten($module-title-color, 20%);
+}
+
+@media (min-width:768px) {
+	#lesson-sidebar-title {
+		font-size: 18px;
+	}
+	#lesson-sidebar-unit-title {
+		font-size: 12px;
+	}
+	#lesson-title {
+	font-size: $module-title-fontsize;
+	line-height: $module-title-lh;
+	margin-top: 10px;
+	}
+	#lesson-subtitle {
+	font-size: $module-title-fontsize * 0.6;
+	margin-top: -14px;
+	}
+}
+@media (min-width:992px) {
+	#lesson-copyright {
+		text-align: left;
+	}
+	#lesson-footer {
+		text-align: right;
+	}
+	#lesson-image-credit {
+		text-align: right;
+	}
+	#parent-links {
+		margin-right: -12px;
+	}
+	
+	#lesson-sidebar-title {
+		font-size: 20px;
+	}
+	#lesson-sidebar-unit-title {
+		font-size: 16px;
+	}
+	#lesson-title {
+	font-size: $module-title-fontsize * 1.5;
+	line-height: $module-title-lh * 1.5;
+	margin-top: 10px;
+	}
+	#lesson-subtitle {
+	font-size: $module-title-fontsize * 0.8;
+	margin-top: -18px;
+	}
+}
+
+
+#master-container {
+    height: 100%;
+    overflow: hidden;
+	margin-top: 50px;
+	background-color: #fff;
+	border: 1px solid #555;
+	overflow: hidden;
+	box-shadow: 2px 2px 18px rgba(45,45,45, 0.25);
+ }
+#master-container.splash-background {
+	background: url(../assets/module-cover.jpg) top center no-repeat;
+	position: relative;
+}
+.splash-overlay {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+35 */
+background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 45%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 45%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+
+    overflow: hidden;
+    height: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+    z-index: 2;
+}
+
+.stage_nav {
+	margin-top: 0px;
+	position: absolute;
+	display: block;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.pager {
+	border-top: 1px solid #ccc;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.pager li > a {
+	border: none;
+	border-radius: 0;
+	padding: 10px 15px;
+}
+.pager .previous > a {
+	border-right: 1px solid #ccc;
+}
+.pager .next > a {
+	border-left: 1px solid #ccc;
+}
+#lesson-content {
+	padding-bottom: 60px;
+	min-height: 480px;
+	background-color: #fff;
+}
+
+#lesson-midrow-items {
+	padding-bottom: 100px;
+}
+#lesson-midrow-items .btn {
+	box-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+}
+#lesson-description {
+	text-shadow: 1px 1px 0px rgba(255,255,255,0.8), -1px -1px 4px #fff;
+}
+#lesson-splash-toc {
+	background-color: rgba(18, 18, 18, 0.7);
+}
+
+
+#lesson-splash-credits {
+	font-weight: bold;
+	font-size: 11px;
+	color: #fff;
+	text-shadow: 1px 1px 4px #000;
+}
+#lesson-image-credit {
+	text-align: left;
+}
+
+.unit-panel {
+	max-width: 640px;
+	background-color: rgba(255,255,255,0.4);
+}
+.unit-panel p {
+	font-size: 13px;
+}
+
+#lesson-footer {
+	font-size: 11px;
+	text-align: center;
+	background-color: #fff;
+	border-top: 1px solid #555;
+}
+#lesson-copyright {
+	text-align: center;
+	margin-top: 6px;
+	margin-bottom: 4px;
+}
+#parent-links {
+	list-style-type: none;
+	float: none;
+	padding-left: 0px;
+	margin-top: 6px;
+	margin-bottom: 4px;
+}
+@media (min-width:768px) {
+	#lesson-image-credit {
+		text-align: right;
+	}
+	#lesson-midrow-items {
+		padding-bottom: 250px;
+	}
+}
+@media (min-width:992px) {
+	#lesson-copyright {
+		text-align: left;
+	}
+	#lesson-footer {
+		text-align: right;
+	}
+	#lesson-image-credit {
+		text-align: right;
+	}
+	#parent-links {
+		margin-right: -12px;
+	}
+	#lesson-midrow-items {
+		padding-bottom: 350px;
+	}
+}
+
+
+#parent-links > li {
+	display: inline-block;
+	padding: 0px 2px;
+}
+#parent-links > li:after {
+	content: '';
+	display: inline-block;
+	height: 12px;
+	width: 2px;
+	margin-left: 8px;
+	background-color: $module-color4;
+	margin-bottom: -2px;
+}
+#parent-links > li:last-child:after {
+	background-color: transparent;
+}
+
+.deprecated {
+	color: #ccc;
+	text-decoration: line-through;
+}
+
+/* SORTABLE FIX */
+.sortable li {
+  height: unset;
+  line-height: 1em;
+  padding: 10px 28px !important;
+  position: relative; }
+
+.question-wrap ol.sortable li span:first-child,
+.question-wrap ul.sortable li span:first-child {
+  margin: 0px; }
+
+.question-wrap ol.sortable li span:last-child {
+  margin: 0px; }
+
+.sortable li .glyphicon-th {
+  position: absolute;
+  left: 8px;
+  top: 50%; }
+
+.sortable li .glyphicon-sort {
+  position: absolute;
+  right: 8px;
+  top: 50%; }
+
+.question-wrap ol.sortable li span.glyphicon-th,
+.question-wrap ol.sortable li span.glyphicon-sort {
+  margin-top: -7px; }
+
+
+/* ========================================= */
+/* === 5.0 ABSORB MODS =====================
+nav.navbar > .container {
+	width: 100%;
+	max-width: 1280px;
+}
+#master-container {
+	width: 100%;
+	max-width: 1280px;
+}
+body {
+	background-color: #fff;
+} */
