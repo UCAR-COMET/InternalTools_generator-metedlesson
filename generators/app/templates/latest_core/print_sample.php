@@ -38,8 +38,7 @@ $mm = new MediaItemManager();
     <main id="module-wrapper" class="container">
         <div class="row">
             <header id="module-topbanner">
-                <a id="module-title" class="module-title-text <% if (templateType === 'multi-print') { %>chapter_title<% } %>"
-                    href="index.htm"><% if (templateType === 'multi-print') { %>UNIT TITLE HERE<% } %></a>
+                <h1 id="module-title" class="module-title-text <% if (templateType === 'multi-print') { %>chapter_title<% } %>"><% if (templateType === 'multi-print') { %>UNIT TITLE HERE<% } %></h1>
                 <h3 id="module-credit" class="hidden-sm hidden-xs">
                     <% if (lessonLang === 'ES') { %>Producido por The COMET® Program
                     <% } else if (lessonLang === 'FR') { %>Produit par le programme COMET®

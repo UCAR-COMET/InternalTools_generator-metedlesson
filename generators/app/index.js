@@ -220,10 +220,10 @@ module.exports = class extends Generator {
         this.templatePath("latest_core/modernizr"),
         this.destinationPath("build/modernizr")
       );
-      this.fs.copy(
-        this.templatePath("latest_core/navmenu/navmenu.inc.php"),
+      /* This.fs.copy(
+        this.templatePath("latest_core/navmenu.inc.php"),
         this.destinationPath("build/navmenu.inc.php")
-      );
+      ); */
       this.fs.copy(
         this.templatePath("latest_core/simple_html_dom.php"),
         this.destinationPath("build/simple_html_dom.php")
@@ -287,11 +287,11 @@ module.exports = class extends Generator {
         }
       );
       // Navmenu.php
-      this.fs.copyTpl(
-        this.templatePath("latest_core/navmenu/navmenu.php"),
+      /* this.fs.copyTpl(
+        this.templatePath("latest_core/navmenu.php"),
         this.destinationPath("build/navmenu.php"),
         { lessonPath: this.props.metedPath }
-      );
+      ); */
       // Print.php
       this.fs.copyTpl(
         this.templatePath("latest_core/print.php"),
@@ -342,10 +342,10 @@ module.exports = class extends Generator {
         this.templatePath("latest_core/modernizr"),
         this.destinationPath("build/modernizr")
       );
-      this.fs.copy(
-        this.templatePath("latest_core/navmenu/navmenu.inc.php"),
+      /* This.fs.copy(
+        this.templatePath("latest_core/navmenu.inc.php"),
         this.destinationPath("build/navmenu.inc.php")
-      );
+      ); */
       this.fs.copy(
         this.templatePath("latest_core/simple_html_dom.php"),
         this.destinationPath("build/simple_html_dom.php")
@@ -444,7 +444,7 @@ module.exports = class extends Generator {
             }
           );
           this.fs.copy(
-            this.templatePath("latest_core/navmenu/navmenu.inc.php"),
+            this.templatePath("latest_core/navmenu.inc.php"),
             this.destinationPath("build/navmenu.inc.php")
           );
           break;
@@ -459,7 +459,7 @@ module.exports = class extends Generator {
             }
           );
           this.fs.copy(
-            this.templatePath("latest_core/navmenu/navmenu.inc.php"),
+            this.templatePath("latest_core/navmenu.inc_es.php"),
             this.destinationPath("build/navmenu.inc.php")
           );
           break;
@@ -474,7 +474,7 @@ module.exports = class extends Generator {
             }
           );
           this.fs.copy(
-            this.templatePath("latest_core/navmenu/navmenu.inc.php"),
+            this.templatePath("latest_core/navmenu.inc_fr.php"),
             this.destinationPath("build/navmenu.inc.php")
           );
           break;
@@ -491,7 +491,7 @@ module.exports = class extends Generator {
             }
           );
           this.fs.copy(
-            this.templatePath("latest_core/navmenu/navmenu.inc.php"),
+            this.templatePath("latest_core/navmenu.inc.php"),
             this.destinationPath("build/navmenu.inc.php")
           );
           break;
