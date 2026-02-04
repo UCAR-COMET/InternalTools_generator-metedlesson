@@ -236,7 +236,7 @@ class Navmenu
 					$pageNum = substr($link, 6);
 				}
 				
-				return '<div class="stage_nav"><ul class="pager"><li class="previous unit"><a href="' . $this->linkPrefix . '?tab=' . ($this->tab - 1) . "&amp;page=" . $pageNum . "&amp;type=" . $this->type . $this->linkSuffix . '">&larr; Atrás Unit</a></li><li class="next"><a href="' . $this->linkPrefix . '?tab=' . $this->tab . '&amp;page=' . $next . "&amp;type=" . $this->type . $this->linkSuffix . '">Adelante &rarr;</a></li></ul></div>';								 
+				return '<div class="stage_nav"><ul class="pager"><li class="previous unit"><a href="' . $this->linkPrefix . '?tab=' . ($this->tab - 1) . "&amp;page=" . $pageNum . "&amp;type=" . $this->type . $this->linkSuffix . '">&larr; Unidad previa</a></li><li class="next"><a href="' . $this->linkPrefix . '?tab=' . $this->tab . '&amp;page=' . $next . "&amp;type=" . $this->type . $this->linkSuffix . '">Adelante &rarr;</a></li></ul></div>';								 
 			}
 			
 			
@@ -259,7 +259,7 @@ class Navmenu
 				$link = $a->href;
 				$pageNum = substr($link, 6);
 				
-				return '<div class="stage_nav"><ul class="pager"><li class="previous"><a href="' . $this->linkPrefix . '?tab=' . $this->tab  . '&amp;page=' . $previous . "&amp;type=" . $this->type . $this->linkSuffix . '">&larr; Atrás</a></li> <li class="next unit"><a href="' . $this->linkPrefix . '?tab=' . ($this->tab + 1) . '&amp;page=' . $pageNum . "&amp;type=" . $this->type . $this->linkSuffix . '">Adelante Unit &rarr;</a></li></ul></div>';								 
+				return '<div class="stage_nav"><ul class="pager"><li class="previous"><a href="' . $this->linkPrefix . '?tab=' . $this->tab  . '&amp;page=' . $previous . "&amp;type=" . $this->type . $this->linkSuffix . '">&larr; Atrás</a></li> <li class="next unit"><a href="' . $this->linkPrefix . '?tab=' . ($this->tab + 1) . '&amp;page=' . $pageNum . "&amp;type=" . $this->type . $this->linkSuffix . '">Siguiente unidad &rarr;</a></li></ul></div>';								 
 			}
 			
 			
