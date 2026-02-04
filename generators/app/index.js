@@ -14,7 +14,7 @@ module.exports = class extends Generator {
 
     // 2) Greeting
     this.log(yosay(`Let's generate a new ${chalk.blue("MetEd Lesson")}!`));
-    this.log(chalk.blue("v.3.0.1"));
+    this.log(chalk.blue("v.3.0.2"));
 
     // 3) Begin Prompts
     const prompts = [
@@ -287,11 +287,11 @@ module.exports = class extends Generator {
         }
       );
       // Navmenu.php
-      /* this.fs.copyTpl(
+      this.fs.copyTpl(
         this.templatePath("latest_core/navmenu.php"),
         this.destinationPath("build/navmenu.php"),
         { lessonPath: this.props.metedPath }
-      ); */
+      );
       // Print.php
       this.fs.copyTpl(
         this.templatePath("latest_core/print.php"),
