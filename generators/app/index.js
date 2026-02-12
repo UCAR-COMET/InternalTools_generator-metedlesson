@@ -160,7 +160,7 @@ module.exports = class extends Generator {
     if (this.props.templateType === "absorb-2025") {
       // Gruntfile
       this.fs.copy(
-        this.templatePath("extensions/grunt/newlesson/Gruntfile.js"),
+        this.templatePath("extensions/grunt/absorb_2025/Gruntfile.js"),
         this.destinationPath("Gruntfile.js")
       );
       // [assets] folder
@@ -275,7 +275,7 @@ module.exports = class extends Generator {
     ) {
       // Single-print and multi-print setup
       this.fs.copy(
-        this.templatePath("extensions/grunt/newlesson/Gruntfile.js"),
+        this.templatePath("extensions/grunt/legacy_lc/Gruntfile.js"),
         this.destinationPath("Gruntfile.js")
       );
       this.fs.copy(
