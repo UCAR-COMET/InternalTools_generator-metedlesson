@@ -17,7 +17,6 @@
   <script src="jquery/jquery.min.js"></script>
   <script src="jquery/jquery-ui.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
-  <!--lc defaults-->
   <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
   <script src="jquery/defaults.js"></script>
 <!-- =CORE TAGS END= -->
@@ -34,62 +33,41 @@
 </head>
 <body>
 
-  <!--NAVBAR-->
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-          aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-      
-        <% if (lessonLang==='ES' ) { %>
+<!--NAVBAR-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <% if (lessonLang==='ES' ) { %>
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="">Inicio</a></li>
-<% if (templateType==='articulate-shell' ) { %> <li><a href="storyline/story.html" target="_blank">Lección <span class="glyphicon glyphicon-new-window"></span></a></li>
-<% } else { %>  <li><a href="navmenu.php">Lección</a></li><% } %>
-          <li><a href="download.php">Descargar</a></li>
+          <li><a href="navmenu.php">Lección</a></li>
           <li><a href="media_gallery.php">Galería multimedia</a></li>
-<% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %> <li><a href="contributors.htm">Colaboradores</a></li><% } %>
         </ul>
       <% } else if (lessonLang==='FR' ) { %>
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="">Accueil</a></li>
-        <% if (templateType==='articulate-shell' ) { %>
-          <li><a href="storyline/story.html" target="_blank">Leçon <span class="glyphicon glyphicon-new-window"></span></a></li>
-        <% } else { %>
           <li><a href="navmenu.php">Leçon</a></li>
-        <% } %>
-          <li><a href="download.php">Télécharger</a></li>
           <li><a href="media_gallery.php">Médiathèque</a></li>
-        <% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %>
-          <li><a href="contributors.htm">Contributeurs</a></li>
-      <% } %>
         </ul>
       <% } else { %>
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="">Home</a></li>
-        <% if (templateType==='articulate-shell' ) { %>
-          <li><a href="storyline/story.html" target="_blank">Lesson <span class="glyphicon glyphicon-new-window"></span></a></li>
-        <% } else { %>
           <li><a href="navmenu.php">Lesson</a></li>
-        <% } %>
-          <li><a href="download.php">Download</a></li>
           <li><a href="media_gallery.php">Gallery</a></li>
-        <% if (templateType==='multi-print' || templateType==='articulate-shell' ) { %>
-          <li><a href="contributors.htm">Contributors</a></li>
-      <% } %>
         </ul>
       <% } %>
-      
       </div>
-    </div>
-  </nav>
+  </div>
+</nav>
 
   <main id="master-container" class="container splash-background">
     <section class="splash-overlay row">

@@ -40,105 +40,93 @@
 <![endif]-->
 </head>
 <body>
-    <!--NAVBAR-->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid" style="max-width: 1200px;">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-            <% if (lessonLang === 'ES') { %>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.htm">Inicio</a></li>
-                    <li class="active"><a href="navmenu.php">Lección</a></li>
-                    <li><a href="download.php">Descargar</a></li>
-                    <li><a href="media_gallery.php">Galería multimedia</a></li>
-                <% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %>
-                    <li><a href="contributors.htm">Colaboradores</a></li>
-            <% } %>
-                </ul>
-            <% } else if (lessonLang === 'FR') { %>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.htm">Accueil</a></li>
-                    <li class="active"><a href="navmenu.php">Leçon</a></li>
-                    <li><a href="download.php">Télécharger</a></li>
-                    <li><a href="media_gallery.php">Médiathèque</a></li>
-                <% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %>
-                    <li><a href="contributors.htm">Contributeurs</a></li>
-            <% } %>
-                </ul>
-            <% } else { %>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.htm">Home</a></li>
-                    <li class="active"><a href="navmenu.php">Lesson</a></li>
-                    <li><a href="download.php">Download</a></li>
-                    <li><a href="media_gallery.php">Gallery</a></li>
-                <% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %>
-                    <li><a href="contributors.htm">Contributors</a></li>
-            <% } %>
-                </ul>
-            <% } %>
-            </div>
+<!--NAVBAR-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid" style="max-width: 1200px;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
-    </nav>
+        <div id="navbar" class="navbar-collapse collapse">
+        <% if (lessonLang === 'ES') { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Inicio</a></li>
+                <li class="active"><a href="navmenu.php">Lección</a></li>
+                <li><a href="media_gallery.php">Galería multimedia</a></li>
+            </ul>
+        <% } else if (lessonLang === 'FR') { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Accueil</a></li>
+                <li class="active"><a href="navmenu.php">Leçon</a></li>
+                <li><a href="media_gallery.php">Médiathèque</a></li>
+            </ul>
+        <% } else { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Home</a></li>
+                <li class="active"><a href="navmenu.php">Lesson</a></li>
+                <li><a href="media_gallery.php">Gallery</a></li>
+            </ul>
+        <% } %>
+        </div>
+    </div>
+</nav>
 
-    <main id="master-container" class="container-fluid" style="max-width: 1200px;">
-        <div class="row">
-            <div id="lesson-sidebar" class="col-sm-3">
-                <h2 id="lesson-sidebar-title">$templateTitle</h2>
-                <hr>
-                <!--  Table of Contents -->
-                <nav id="menu" class="sidebar-toc">
-                    <!-- Multi-print Lesson Selector -->
-                    <div class="btn-group">
-                    <% if (templateType === 'multi-print') { %>
-                        <a href="#" data-toggle="dropdown"><h4 id="lesson-sidebar-unit-title">$titleTag <span class="caret"></span></h4></a>
-                        $tabMenu
-                    <% } %>
-                    </div>
-                    <% if (narratedSwitch) { %>
-                    <!-- Narrated/Text Switch -->
-                    <div id="toggle_text" class="module-nav">
-                        $typeLink
-                    </div>
-                    <% } %>
-                    
-                    <!--<div class="dropdown">
-                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select Section
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="navmenu.php?tab=1">Section 1</a></li>
-                        <li><a href="navmenu.php?tab=2">Section 2</a></li>
-                    </ul>
-                    </div>-->
-
-                    <br>
-                    $templateMenu
-                    <hr>
-                    <!--<div class="module-nav">
-                        <ul class="nav">
-                            <li><a href="#.htm" class="fbox-res-iframe">ADDITIONAL RESOURCES</a></li>
-                        </ul> 
-                    </div>-->
-                </nav>
+<main id="master-container" class="container-fluid" style="max-width: 1200px;">
+    <div class="row">
+        <div id="lesson-sidebar" class="col-sm-3">
+        <h2 id="lesson-sidebar-title">$templateTitle</h2>
+        <hr>
+        <!--  Table of Contents -->
+        <nav id="menu" class="sidebar-toc">
+            <!-- Multi-print Lesson Selector -->
+            <div class="btn-group">
+            <% if (templateType === 'multi-print') { %>
+                <a href="#" data-toggle="dropdown"><h4 id="lesson-sidebar-unit-title">$titleTag <span class="caret"></span></h4></a>
+                $tabMenu
+            <% } %>
             </div>
+            
+            <% if (narratedSwitch) { %>
+            <!-- Narrated/Text Switch -->
+            <div id="toggle_text" class="module-nav">
+                $typeLink
+            </div>
+            <% } %>
+            
+            <!--<div class="dropdown">
+            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Section
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                <li><a href="navmenu.php?tab=1">Section 1</a></li>
+                <li><a href="navmenu.php?tab=2">Section 2</a></li>
+            </ul>
+            </div>-->
+
+            <br>
+            $templateMenu
+            <hr>
+            <!--<div class="module-nav">
+                <ul class="nav">
+                    <li><a href="#.htm" class="fbox-res-iframe">ADDITIONAL RESOURCES</a></li>
+                </ul> 
+            </div>-->
+        </nav>
+        </div>
 
             <section id="lesson-content" class="col-sm-9">
                 <div id="print-button">
-                    <a href="$printLink"><span class="glyphicon glyphicon-print"></span> <% if (lessonLang === 'ES') { %>Imprimir<% } else if (lessonLang === 'FR') { %>Imprimer<% } else { %>Print<% } %></a>
+                    <a href="$printLink" target="_blank"><span class="glyphicon glyphicon-print"></span> <% if (lessonLang === 'ES') { %>Imprimir<% } else if (lessonLang === 'FR') { %>Imprimer<% } else { %>Print<% } %></a>
                 </div>
                 $templateContent
-                
             </section>
-        </div>
+    </div>
 
         <!--FOOTER-->
         <footer id="lesson-footer" class="row">

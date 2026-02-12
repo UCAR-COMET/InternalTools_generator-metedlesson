@@ -15,17 +15,16 @@ require_once('cometAPI.inc.php');
     <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="initial-scale=1.0">
 <!-- =CORE TAGS START= -->
-<link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/module-absorb.css">
-  <script src="jquery/jquery.min.js"></script>
-  <script src="jquery/jquery-ui.min.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/fancybox/fancybox.min.css">
-  <script src="jquery/apps/fancybox/fancybox.min.js"></script>
-  <!-- lc2024: module-print.css, defaults.js -->
-  <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
-  <script src="jquery/defaults.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/module-absorb.css">
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/fancybox/fancybox.min.css">
+    <script src="jquery/apps/fancybox/fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
+    <script src="jquery/defaults.js"></script>
 <!-- =CORE TAGS END= -->
     <script>
     // Specify Print View.  [true] for PRINT, or [false] for DYNAMIC content.
@@ -59,92 +58,63 @@ require_once('cometAPI.inc.php');
 </head>
 <body>
 
-	<!--NAVBAR-->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-					aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<% if (lessonLang === 'ES') { %>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.htm">Inicio</a></li>
-					<% if (templateType === 'articulate-shell') { %>
-					<li><a href="storyline/story.html" target="_blank">Lección <span
-								class="glyphicon glyphicon-new-window"></span></a></li>
-					<% } else { %>
-					<li><a href="navmenu.php">Lección</a></li>
-					<% } %>
-					<li><a href="download.php">Descargar</a></li>
-					<li class="active"><a href="media_gallery.php">Galería multimedia</a></li>
-					<% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %><li><a
-							href="contributors.htm">Colaboradores</a></li>
-					<% } %>
-				</ul>
-				<% } else if (lessonLang === 'FR') { %>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.htm">Accueil</a></li>
-					<% if (templateType === 'articulate-shell') { %>
-					<li><a href="storyline/story.html" target="_blank">Leçon <span
-								class="glyphicon glyphicon-new-window"></span></a></li>
-					<% } else { %>
-					<li><a href="navmenu.php">Leçon</a></li>
-					<% } %>
-					<li><a href="download.php">Télécharger</a></li>
-					<li class="active"><a href="media_gallery.php">Médiathèque</a></li>
-					<% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %><li><a
-							href="contributors.htm">Contributeurs</a></li>
-					<% } %>
-				</ul>
-				<% } else { %>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.htm">Home</a></li>
-					<% if (templateType === 'articulate-shell') { %>
-					<li><a href="storyline/story.html" target="_blank">Lesson <span
-								class="glyphicon glyphicon-new-window"></span></a></li>
-					<% } else { %>
-					<li><a href="navmenu.php">Lesson</a></li>
-					<% } %>
-					<li><a href="download.php">Download</a></li>
-					<li class="active"><a href="media_gallery.php">Gallery</a></li>
-					<% if (templateType === 'multi-print' || templateType === 'articulate-shell') { %><li><a
-							href="contributors.htm">Contributors</a></li>
-					<% } %>
-				</ul>
-				<% } %>
-			</div>
-		</div>
-	</nav>
+<!--NAVBAR-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <% if (lessonLang === 'ES') { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Inicio</a></li>
+                <li><a href="navmenu.php">Lección</a></li>
+                <li class="active"><a href="media_gallery.php">Galería multimedia</a></li>
+            </ul>
+            <% } else if (lessonLang === 'FR') { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Accueil</a></li>
+                <li><a href="navmenu.php">Leçon</a></li>
+                <li class="active"><a href="media_gallery.php">Médiathèque</a></li>
+            </ul>
+            <% } else { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Home</a></li>
+                <li><a href="navmenu.php">Lesson</a></li>
+                <li class="active"><a href="media_gallery.php">Gallery</a></li>
+            </ul>
+            <% } %>
+        </div>
+    </div>
+</nav>
 
-	<main id="master-container" class="container">
-
-		<div class="row">
-			<div id="lesson-content" class="col-sm-12">
-				<h2 id="lesson-sidebar-title" class="module-title-text"></h2>
-				<!--  Table of Contents -->
-				<div id="menu" class="sidebar-toc">
-					<h4 id="lesson-sidebar-unit-title"><% if (lessonLang === 'ES') { %> Galería multimedia<% } else if (lessonLang === 'FR') { %>Médiathèque<% } else { %>Media Gallery<% } %></h4>
-				</div>
-				<hr>
-				<% if (lessonLang === 'ES') { %>
-				<p>Los elementos multimedia empleados en esta lección están protegidos por diversas licencias de
-					propiedad intelectual (<i>copyright</i>). Para obtener más información al respecto, utilice el
-					enlace «Términos de derechos de autor» asociado a cada elemento a continuación.</p>
-				<% } else if (lessonLang === 'FR') { %>
-				<p>Les supports graphiques utilisés dans ce leçon sont protégés par différents droits d'auteurs.
-					Veuillez svp utiliser le lien «&nbsp;termes des droits d'auteurs&nbsp;» associé à chaque élément
-					ici-bas pour plus d'informations.</p>
-				<% } else { %>
-				<p>Media elements used in this module are protected by a variety of copyright licenses. Please use the
-					"copyright terms" link associated with each item below for more information.</p>
-				<% } %>
-				
+<main id="master-container" class="container">
+	<div class="row">
+        <div id="lesson-content" class="col-sm-12">
+            <h2 id="lesson-sidebar-title" class="module-title-text"></h2>
+            <!--  Table of Contents -->
+            <div id="menu" class="sidebar-toc">
+                <h4 id="lesson-sidebar-unit-title"><% if (lessonLang === 'ES') { %> Galería multimedia<% } else if (lessonLang === 'FR') { %>Médiathèque<% } else { %>Media Gallery<% } %></h4>
+            </div>
+            <hr>
+            <% if (lessonLang === 'ES') { %>
+            <p>Los elementos multimedia empleados en esta lección están protegidos por diversas licencias de
+                propiedad intelectual (<i>copyright</i>). Para obtener más información al respecto, utilice el
+                enlace «Términos de derechos de autor» asociado a cada elemento a continuación.</p>
+            <% } else if (lessonLang === 'FR') { %>
+            <p>Les supports graphiques utilisés dans ce leçon sont protégés par différents droits d'auteurs.
+                Veuillez svp utiliser le lien «&nbsp;termes des droits d'auteurs&nbsp;» associé à chaque élément
+                ici-bas pour plus d'informations.</p>
+            <% } else { %>
+            <p>Media elements used in this module are protected by a variety of copyright licenses. Please use the
+                "copyright terms" link associated with each item below for more information.</p>
+            <% } %>
 
     <div id="image_gallery" class="gallery-container row">
         <?php foreach($items as $item) { ?>
@@ -185,7 +155,6 @@ require_once('cometAPI.inc.php');
                     <div class="media-description-text">
                         <p><strong>Descripción:</strong><br> <?php echo $item->description; ?></p>
                     </div>
-
                     <p class="media-filename"><strong>Nombre de archivo:</strong><br><?php echo $item->name ?>.<?php echo $item->extension; ?></p>
                     <p><strong>Créditos:</strong><br><?php echo $item->credits; ?></p>
                     <p><strong>Términos de derechos de autor:</strong> <br>
@@ -328,51 +297,52 @@ require_once('cometAPI.inc.php');
         </div>
         <% } %>
         
-        </div>
-            <div>
-                <!-- start table -->
-                <!-- close column after each -->
-                <!-- close row after 2 columns -->
-                <?php } ?><!-- close row if ending on something other than 4 -->
-            </div><!-- end maincontent -->
+</div>
 
-        </div>
-        </div>
+    <div>
+        <!-- start table -->
+        <!-- close column after each -->
+        <!-- close row after 2 columns -->
+        <?php } ?><!-- close row if ending on something other than 4 -->
+    </div><!-- end maincontent -->
 
-        <!--FOOTER-->
-        <footer id="lesson-footer" class="row">
-            <div class="col-md-8">
-            <% if (lessonLang === 'ES') { %>
-                <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - Reservados todos los derechos.</p>
-            <% } else if (lessonLang === 'FR') { %>
-                <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - Tous droits réservés.</p>
-            <% } else { %>
-                <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
-            <% } %>
-            </div>
-            <div class="col-md-4">
-            <% if (lessonLang === 'ES') { %>
-                <ul id="parent-links">
-                    <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Avisos legales</a></li>
-                    <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
-                    <li><a href="https://www.meted.ucar.edu/index_es.php" target="_blank">MetEd</a></li>
-                </ul>
-            <% } else if (lessonLang === 'FR') { %>
-                <ul id="parent-links">
-                    <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Mentions juridiques</a></li>
-                    <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
-                    <li><a href="https://www.meted.ucar.edu/" target="_blank">MetEd</a></li>
-                </ul>
-            <% } else { %>
-                <ul id="parent-links">
-                    <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Legal Notices</a></li>
-                    <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
-                    <li><a href="https://www.meted.ucar.edu/" target="_blank">MetEd</a></li>
-                </ul>
-            <% } %>
-            </div>
-        </footer>
-    </main><!-- end master container -->
+</div>
+</div>
+
+<!--FOOTER-->
+<footer id="lesson-footer" class="row">
+    <div class="col-md-8">
+    <% if (lessonLang === 'ES') { %>
+        <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - Reservados todos los derechos.</p>
+    <% } else if (lessonLang === 'FR') { %>
+        <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - Tous droits réservés.</p>
+    <% } else { %>
+        <p id="lesson-copyright">&copy; <%= copyrightYear %>, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
+    <% } %>
+    </div>
+    <div class="col-md-4">
+    <% if (lessonLang === 'ES') { %>
+        <ul id="parent-links">
+            <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Avisos legales</a></li>
+            <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
+            <li><a href="https://www.meted.ucar.edu/index_es.php" target="_blank">MetEd</a></li>
+        </ul>
+    <% } else if (lessonLang === 'FR') { %>
+        <ul id="parent-links">
+            <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Mentions juridiques</a></li>
+            <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
+            <li><a href="https://www.meted.ucar.edu/" target="_blank">MetEd</a></li>
+        </ul>
+    <% } else { %>
+        <ul id="parent-links">
+            <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Legal Notices</a></li>
+            <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
+            <li><a href="https://www.meted.ucar.edu/" target="_blank">MetEd</a></li>
+        </ul>
+    <% } %>
+    </div>
+</footer>
+</main><!-- end master container -->
 
 
     <!-- Quiz and Survey prompt -->

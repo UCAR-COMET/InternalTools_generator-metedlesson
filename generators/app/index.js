@@ -156,81 +156,56 @@ module.exports = class extends Generator {
     // Extend or create package.json file in destination path
     this.fs.extendJSON(this.destinationPath("package.json"), pkgJson);
 
-    // BUILD
-
-    // Articulate shell setup if selected
-    /* if (this.props.templateType === "Articulate Components") {
-                      -- GRUNT
-                      this.fs.copy(
-                        this.templatePath("extensions/grunt/articulate/Gruntfile.js"),
-                        this.destinationPath("Gruntfile.js")
-                      );
-                      -- GALLERY Builder Components
-                      this.fs.copyTpl(
-                        this.templatePath("articulate_rise/gallery_origin.php"),
-                        this.destinationPath("build/gallery_origin.php"),
-                        {
-                          templateType: this.props.templateType,
-                          lessonTitle: this.props.metedName,
-                          lessonID: this.props.metedID,
-                          copyrightYear: this.generatorYear,
-                          lessonLang: this.props.metedLang
-                        }
-                      );
-                      this.fs.copyTpl(
-                        this.templatePath("articulate_rise/gallery_target.htm"),
-                        this.destinationPath("build/gallery_target.htm"),
-                        {
-                          templateType: this.props.templateType,
-                          lessonTitle: this.props.metedName,
-                          lessonID: this.props.metedID,
-                          copyrightYear: this.generatorYear,
-                          lessonLang: this.props.metedLang
-                        }
-                      );
-                    } else */
-    // LATEST CORE 2025 UPDATE SETUP
+    // LATEST CORE 2025+ -- Constant Folders and Files Structure
     if (this.props.templateType === "absorb-2025") {
-      // Base files
+      // Gruntfile
       this.fs.copy(
         this.templatePath("extensions/grunt/newlesson/Gruntfile.js"),
         this.destinationPath("Gruntfile.js")
       );
+      // [assets] folder
       this.fs.copy(
         this.templatePath("latest_core/assets"),
         this.destinationPath("build/assets")
       );
+      // [bootstrap] folder
       this.fs.copy(
         this.templatePath("latest_core/2025_update/bootstrap"),
         this.destinationPath("build/bootstrap")
       );
+      // [css] folder
       this.fs.copy(
         this.templatePath("latest_core/2025_update/css"),
         this.destinationPath("build/css")
       );
+      // [jquery] folder
       this.fs.copy(
         this.templatePath("latest_core/2025_update/jquery"),
         this.destinationPath("build/jquery")
       );
+      // [ie-support] folder
       this.fs.copy(
         this.templatePath("latest_core/ie-support"),
         this.destinationPath("build/ie-support")
       );
+      // [modernizr] folder
       this.fs.copy(
         this.templatePath("latest_core/modernizr"),
         this.destinationPath("build/modernizr")
       );
+      // navmenu.inc.php file
       this.fs.copy(
         this.templatePath("latest_core/navmenu.inc.php"),
         this.destinationPath("build/navmenu.inc.php")
       );
+      // simple_html_dom.php file
       this.fs.copy(
         this.templatePath("latest_core/simple_html_dom.php"),
         this.destinationPath("build/simple_html_dom.php")
       );
 
-      // MODS
-      // index.htm
+      // LATEST CORE 2025+ -- Modified files with template options
+      // index.htm file
       this.fs.copyTpl(
         this.templatePath("latest_core/2025_update/index.htm"),
         this.destinationPath("build/index.htm"),
@@ -245,22 +220,7 @@ module.exports = class extends Generator {
           splashImageCredit: this.copyrightText
         }
       );
-      // Download.php
-      this.fs.copyTpl(
-        this.templatePath("latest_core/2025_update/download.php"),
-        this.destinationPath("build/download.php"),
-        {
-          templateType: this.props.templateType,
-          lessonTitle: this.props.metedName,
-          lessonID: this.props.metedID,
-          lessonLang: this.props.metedLang,
-          lessonDesc: this.props.metedDesc,
-          lessonKeys: this.props.metedKeys,
-          copyrightYear: this.generatorYear,
-          pathStructure: this.structure
-        }
-      );
-      // PageTemplate.php
+      // pageTemplate.php file
       this.fs.copyTpl(
         this.templatePath("latest_core/2025_update/pageTemplate.php"),
         this.destinationPath("build/pageTemplate.php"),
@@ -274,7 +234,7 @@ module.exports = class extends Generator {
           copyrightYear: this.generatorYear
         }
       );
-      // Media_gallery.php
+      // media_gallery.php file
       this.fs.copyTpl(
         this.templatePath("latest_core/2025_update/media_gallery.php"),
         this.destinationPath("build/media_gallery.php"),
@@ -286,15 +246,15 @@ module.exports = class extends Generator {
           copyrightYear: this.generatorYear
         }
       );
-      // Navmenu.php
+      // navmenu.php file
       this.fs.copyTpl(
         this.templatePath("latest_core/navmenu.php"),
         this.destinationPath("build/navmenu.php"),
         { lessonPath: this.props.metedPath }
       );
-      // Print.php
+      // print.php file
       this.fs.copyTpl(
-        this.templatePath("latest_core/print.php"),
+        this.templatePath("latest_core/2025_update/print.php"),
         this.destinationPath("build/print.php"),
         {
           templateType: this.props.templateType,
