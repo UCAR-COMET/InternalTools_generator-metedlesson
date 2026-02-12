@@ -371,7 +371,7 @@ module.exports = class extends Generator {
       );
       // Navmenu.php
       this.fs.copyTpl(
-        this.templatePath("latest_core/navmenu/navmenu.php"),
+        this.templatePath("latest_core/navmenu.php"),
         this.destinationPath("build/navmenu.php"),
         { lessonPath: this.props.metedPath }
       );
