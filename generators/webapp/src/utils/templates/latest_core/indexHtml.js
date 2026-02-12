@@ -44,57 +44,53 @@ export default `<!doctype html>
         </button>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <ul class="navbar-nav navbar-right">
-          <li class="active">
-            <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
-          </li>
-          <li><a href="print.php" target="_blank"><i class="glyphicon glyphicon-print"></i> Print Lesson</a></li>
-          <li><a href="download.php"><i class="glyphicon glyphicon-download-alt"></i> Download</a></li>
+      
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="">Home</a></li>
+          <li><a href="navmenu.php">Lesson</a></li>
+          <li><a href="download.php">Download</a></li>
+          <li><a href="media_gallery.php">Gallery</a></li>
         </ul>
+      
       </div>
     </div>
   </nav>
 
-  <!--MAIN CONTAINER-->
-  <div class="container" style="margin-top: 80px;">
-    <div class="row">
-      <div class="col-md-12">
-        
-        <!-- LESSON HEADER -->
-        <div class="lesson-header">
-          <h1 class="lesson-title">{{lessonTitle}}</h1>
-          <p class="lesson-description">{{lessonDesc}}</p>
-        </div>
+  <main id="master-container" class="container splash-background">
+    <section class="splash-overlay row">
+      <section class="lesson-titles center">
+        <h1 id="lesson-title">Monitoring Smoke during Day and Night</h1>
+        <br>
+      </section>
 
-        <!-- LESSON CONTENT AREA -->
-        <div class="lesson-content">
-          <div class="alert alert-info">
-            <h4>Welcome to your new MetEd lesson!</h4>
-            <p>This is your generated lesson template. You can now start adding your content here.</p>
-            <p><strong>Lesson ID:</strong> {{lessonID}}</p>
-            <p><strong>Language:</strong> {{lessonLang}}</p>
-          </div>
-          
-          <!-- Add your lesson content here -->
-          <div class="content-placeholder">
-            <p>Start building your lesson content here...</p>
-          </div>
+      <section id="lesson-midrow-items" class="row">
+        <div class="col-md-12">
+            <div class="center"><a href="navmenu.php" class="btn btn-lg btn-primary begin-lesson-button">Begin Lesson &rarr;</a></div>
         </div>
+      </section>
 
-      </div>
-    </div>
-  </div>
+      <section id="lesson-splash-credits" class="row">
+          <div id="lesson-producer" class="col-sm-6">Produced by The COMET&reg; Program</div>
+          <div id="lesson-image-credit" class="col-sm-6">NOAA/CIRA</div>
+      </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p>&copy; {{copyrightYear}} {{splashImageCredit}}</p>
+
+      <!--FOOTER-->
+      <footer id="lesson-footer" class="row splash-footer">
+        <div class="col-md-8">
+            <p id="lesson-copyright">&copy; 2026, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
         </div>
-      </div>
-    </div>
-  </footer>
+        <div class="col-md-4">
+            <ul id="parent-links">
+              <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Legal Notices</a></li>
+              <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
+              <li><a href="https://www.meted.ucar.edu/" target="_blank">MetEd</a></li>
+            </ul>
+        </div>
+      </footer>
+
+  </main>
+
 
 </body>
 </html>`;
