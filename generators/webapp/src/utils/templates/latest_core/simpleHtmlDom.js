@@ -1,4 +1,4 @@
-<?php
+export default `<?php
 /**
  * Website: http://sourceforge.net/projects/simplehtmldom/
  * Additional projects: http://sourceforge.net/projects/debugobject/
@@ -2351,3 +2351,4 @@ class simple_html_dom
 		$this->load_file($args);
 	}
 }
+`

@@ -13,10 +13,9 @@ export const templateCollections = {
 // Default export is the latest core templates
 export const {
   indexTemplate,
-  downloadTemplate,
   pageTemplateTemplate,
   mediaGalleryTemplate,
-  printTemplate
+  navmenuTemplate,
 } = latestCore
 
 // Helper function to get templates by type

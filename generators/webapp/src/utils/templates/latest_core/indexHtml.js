@@ -59,7 +59,7 @@ export default `<!doctype html>
   <main id="master-container" class="container splash-background">
     <section class="splash-overlay row">
       <section class="lesson-titles center">
-        <h1 id="lesson-title">Monitoring Smoke during Day and Night</h1>
+        <h1 id="lesson-title">{{lessonTitle}}</h1>
         <br>
       </section>
 
@@ -71,14 +71,14 @@ export default `<!doctype html>
 
       <section id="lesson-splash-credits" class="row">
           <div id="lesson-producer" class="col-sm-6">Produced by The COMET&reg; Program</div>
-          <div id="lesson-image-credit" class="col-sm-6">NOAA/CIRA</div>
+          <div id="lesson-image-credit" class="col-sm-6">{{splashImageCredit}}</div>
       </section>
 
 
       <!--FOOTER-->
       <footer id="lesson-footer" class="row splash-footer">
         <div class="col-md-8">
-            <p id="lesson-copyright">&copy; 2026, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
+            <p id="lesson-copyright">&copy; {{copyrightYear}}, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
         </div>
         <div class="col-md-4">
             <ul id="parent-links">

@@ -2,14 +2,14 @@ export default `<!doctype html>
 <?php 
 require_once('cometAPI.inc.php'); 
     $mm = new MediaItemManager();
-    $items = $mm->getMediaGalleryUTF8({{moduleId}});
+    $items = $mm->getMediaGalleryUTF8({{lessonID}});
     $moduleManager = new ModuleManager();
-    $module = $moduleManager->getModule({{moduleId}});
+    $module = $moduleManager->getModule({{lessonID}});
 ?>
 <html lang="{{lang}}">
 <head>
     <meta charset="UTF-8">
-    <title>{{moduleTitle}}</title>
+    <title>{{lessonTitle}}</title>
     <meta name="copyright" content="UCAR/COMET">
     <meta name="robots" content="all">
     <meta name="viewport" content="width=device-width">
@@ -56,38 +56,38 @@ require_once('cometAPI.inc.php');
 </head>
 <body>
 
-	<!--NAVBAR-->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-					aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.htm">Home</a></li>
-					<li><a href="navmenu.php">Lesson</a></li>
-					<li class="active"><a href="media_gallery.php">Gallery</a></li>
-				</ul>
-				
-			</div>
-		</div>
-	</nav>
+<!--NAVBAR-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Home</a></li>
+                <li><a href="navmenu.php">Lesson</a></li>
+                <li class="active"><a href="media_gallery.php">Gallery</a></li>
+            </ul>
+            
+        </div>
+    </div>
+</nav>
 
-	<main id="master-container" class="container">
-		<div class="row">
-        <div id="lesson-content" class="col-sm-12">
-            <h2 id="lesson-sidebar-title" class="module-title-text">{{moduleTitle}}</h2>
-            <!--  Table of Contents -->
-            <div id="menu" class="sidebar-toc">
-                <h4 id="lesson-sidebar-unit-title">Media Gallery</h4>
-            </div>
+<main id="master-container" class="container">
+    <div class="row">
+    <div id="lesson-content" class="col-sm-12">
+        <h2 id="lesson-sidebar-title" class="module-title-text">{{lessonTitle}}</h2>
+        <!--  Table of Contents -->
+        <div id="menu" class="sidebar-toc">
+            <h4 id="lesson-sidebar-unit-title">Media Gallery</h4>
+        </div>
 
 		<hr>
 				
@@ -105,96 +105,95 @@ require_once('cometAPI.inc.php');
             ?>
         </div>
                 
-    <div class="gallery-container">
-        <div id="a<?php echo $item->id; ?>" class="col-md-4 col-xs-6 gallery-item">
-        
-            <article class="panel panel-default">
-                <section class="media-thumbnail">
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->extension != "swf" && $item->extension !="mp4" && $item->extension !="htm"){ ?>
-                        <a href="<?php echo $item->path . "/" . $item->name . "." . $item->extension;?>" target="_blank">
-                            <img src="<?php echo $item->path . "/" . $item->name . "." . $item->extension; ?>" alt="<?php echo $item->description; ?>" height="130" class="center-block" />
-                        </a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->extension == "swf"){ ?>
-                        <a href="<?php echo $item->path . "/" . $item->name . "." . $item->extension;?>" target="_blank">
-                            <img src="<?php echo $item->path . "/" . $item->name . ".jpg" ?>" alt="<?php echo $item->description; ?>" height="130" />
-                        </a><br /><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->extension=="mp4"){ ?>
-                        <a href="<?php echo $item->path . "/" . $item->name . "." . $item->extension;?>" target="_blank">
-                            <img src="<?php echo $item->path . "/" . $item->name . ".jpg" ?>" alt="<?php echo $item->description; ?>" height="130" />
-                        </a> <br /><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->extension=="htm"){ ?>
-                        <a href="<?php echo $item->path . "/index." . $item->extension; ?>" target="_blank">
-                            <img src="<?php echo $item->path . "/" . $item->name . ".jpg" ?>" alt="<?php echo $item->description; ?>" height="130" /></a> <br />
-                        <a href="<?php echo $item->path . "/index." . $item->extension; ?>" target="_blank">view loop</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                </section>
-                <section class="media-description">
-                    <div class="media-description-text">
-                        <p><strong>Description:</strong><br><?php echo $item->description; ?></p>
-                    </div>
-                    <p class="media-filename"><strong>File Name:</strong><br><?php echo $item->name ?>.<?php echo $item->extension; ?></p>
-                    <p><strong>Credits:</strong><br><?php echo $item->credits; ?></p>
-                    <p><strong>Copyright Terms:</strong><br>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="COMET Standard Terms of Use"){ ?>
-                        <a href="http://www.meted.ucar.edu/legal.htm" target="_blank">COMET Standard Terms of Use</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="COMET Standard Terms of Use - NCU"){ ?>
-                        <a href="http://www.meted.ucar.edu/legal.htm" target="_blank">COMET Standard Terms of Use - NCU</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons BY 4.0 International"){ ?>
-                        <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons BY 4.0 International</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-ShareAlike 3.0 IGO"){ ?>
-                        <a href="http://creativecommons.org/licenses/by-sa/3.0/igo/" target="_blank">Creative Commons Attribution-ShareAlike 3.0 IGO</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-ShareAlike 3.0 Unported"){ ?>
-                        <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-ShareAlike 3.0</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution 3.0 Unported"){ ?>
-                        <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons Attribution 3.0 Unported</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-ShareAlike 2.5"){ ?>
-                        <a href="http://creativecommons.org/licenses/by-sa/2.5/" target="_blank">Creative Commons Attribution-ShareAlike 2.5</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-ShareAlike 2.0"){ ?>
-                        <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons Attribution-ShareAlike 2.0</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-Noncommercial-Share Alike 2.0 Generic"){ ?>
-                        <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/" target="_blank">Creative Commons Attribution-Noncommercial-Share Alike 2.0 Generic</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Attribution-NonCommercial-NoDerivs 2.0 Generic"){ ?>
-                        <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Attribution-NonCommercial-NoDerivs 2.0 Generic</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-Noncommercial 2.0 Generic"){ ?>
-                        <a href="http://creativecommons.org/licenses/by-nc/2.0/" target="_blank">Creative Commons Attribution-Noncommercial 2.0 Generic</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution 2.0"){ ?>
-                        <a href="http://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons Attribution 2.0</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution 2.0 Generic"){ ?>
-                        <a href="http://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons Attribution 2.0 Generic</a><?php } /*END_PHP_SIRFCIT*/ ?>
-                    </p>
-                </section>
-            </article>
-        </div>
-        
-        </div>
-            <div>
-                <!-- start table -->
-                <!-- close column after each -->
-                <!-- close row after 2 columns -->
-                <?php } ?><!-- close row if ending on something other than 4 -->
-            </div><!-- end maincontent -->
+<div class="gallery-container">
+    <div id="a<?php echo $item->id; ?>" class="col-md-4 col-xs-6 gallery-item">
+        <article class="panel panel-default">
+            <section class="media-thumbnail">
+                <?php /*START_PHP_SIRFCIT*/ if ($item->extension != "swf" && $item->extension !="mp4" && $item->extension !="htm"){ ?>
+                    <a href="<?php echo $item->path . "/" . $item->name . "." . $item->extension;?>" target="_blank">
+                        <img src="<?php echo $item->path . "/" . $item->name . "." . $item->extension; ?>" alt="<?php echo $item->description; ?>" height="130" class="center-block" />
+                    </a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->extension == "swf"){ ?>
+                    <a href="<?php echo $item->path . "/" . $item->name . "." . $item->extension;?>" target="_blank">
+                        <img src="<?php echo $item->path . "/" . $item->name . ".jpg" ?>" alt="<?php echo $item->description; ?>" height="130" />
+                    </a><br /><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->extension=="mp4"){ ?>
+                    <a href="<?php echo $item->path . "/" . $item->name . "." . $item->extension;?>" target="_blank">
+                        <img src="<?php echo $item->path . "/" . $item->name . ".jpg" ?>" alt="<?php echo $item->description; ?>" height="130" />
+                    </a> <br /><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->extension=="htm"){ ?>
+                    <a href="<?php echo $item->path . "/index." . $item->extension; ?>" target="_blank">
+                        <img src="<?php echo $item->path . "/" . $item->name . ".jpg" ?>" alt="<?php echo $item->description; ?>" height="130" /></a> <br />
+                    <a href="<?php echo $item->path . "/index." . $item->extension; ?>" target="_blank">view loop</a><?php } /*END_PHP_SIRFCIT*/ ?>
+            </section>
+            <section class="media-description">
+                <div class="media-description-text">
+                    <p><strong>Description:</strong><br><?php echo $item->description; ?></p>
+                </div>
+                <p class="media-filename"><strong>File Name:</strong><br><?php echo $item->name ?>.<?php echo $item->extension; ?></p>
+                <p><strong>Credits:</strong><br><?php echo $item->credits; ?></p>
+                <p><strong>Copyright Terms:</strong><br>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="COMET Standard Terms of Use"){ ?>
+                    <a href="http://www.meted.ucar.edu/legal.htm" target="_blank">COMET Standard Terms of Use</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="COMET Standard Terms of Use - NCU"){ ?>
+                    <a href="http://www.meted.ucar.edu/legal.htm" target="_blank">COMET Standard Terms of Use - NCU</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons BY 4.0 International"){ ?>
+                    <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons BY 4.0 International</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-ShareAlike 3.0 IGO"){ ?>
+                    <a href="http://creativecommons.org/licenses/by-sa/3.0/igo/" target="_blank">Creative Commons Attribution-ShareAlike 3.0 IGO</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-ShareAlike 3.0 Unported"){ ?>
+                    <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-ShareAlike 3.0</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution 3.0 Unported"){ ?>
+                    <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons Attribution 3.0 Unported</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-ShareAlike 2.5"){ ?>
+                    <a href="http://creativecommons.org/licenses/by-sa/2.5/" target="_blank">Creative Commons Attribution-ShareAlike 2.5</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-ShareAlike 2.0"){ ?>
+                    <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons Attribution-ShareAlike 2.0</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-Noncommercial-Share Alike 2.0 Generic"){ ?>
+                    <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/" target="_blank">Creative Commons Attribution-Noncommercial-Share Alike 2.0 Generic</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Attribution-NonCommercial-NoDerivs 2.0 Generic"){ ?>
+                    <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Attribution-NonCommercial-NoDerivs 2.0 Generic</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution-Noncommercial 2.0 Generic"){ ?>
+                    <a href="http://creativecommons.org/licenses/by-nc/2.0/" target="_blank">Creative Commons Attribution-Noncommercial 2.0 Generic</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution 2.0"){ ?>
+                    <a href="http://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons Attribution 2.0</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                <?php /*START_PHP_SIRFCIT*/ if ($item->copyright_type =="Creative Commons Attribution 2.0 Generic"){ ?>
+                    <a href="http://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons Attribution 2.0 Generic</a><?php } /*END_PHP_SIRFCIT*/ ?>
+                </p>
+            </section>
+        </article>
+    </div>
+</div>
 
-        </div>
-        </div>
+<div>
+    <!-- start table -->
+    <!-- close column after each -->
+    <!-- close row after 2 columns -->
+    <?php } ?><!-- close row if ending on something other than 4 -->
+</div><!-- end maincontent -->
 
-        <!--FOOTER-->
-        <footer id="lesson-footer" class="row">
-            <div class="col-md-8">
-                <p id="lesson-copyright">&copy; {{currentYear}}, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
-            </div>
-            <div class="col-md-4">
-            
-                <ul id="parent-links">
-                    <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Legal Notices</a></li>
-                    <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
-                    <li><a href="https://www.meted.ucar.edu/" target="_blank">MetEd</a></li>
-                </ul>
-            
-            </div>
-        </footer>
-    </main><!-- end master container -->
+</div>
+</div>
 
+<!--FOOTER-->
+<footer id="lesson-footer" class="row">
+    <div class="col-md-8">
+        <p id="lesson-copyright">&copy; {{copyrightYear}}, <a href="https://www.ucar.edu/" target="_blank">The University Corporation for Atmospheric Research</a> - All Rights Reserved.</p>
+    </div>
+    <div class="col-md-4">
+    
+        <ul id="parent-links">
+            <li><a href="https://www.meted.ucar.edu/legal" target="_blank">Legal Notices</a></li>
+            <li><a href="https://www.comet.ucar.edu/" target="_blank">COMET</a></li>
+            <li><a href="https://www.meted.ucar.edu/" target="_blank">MetEd</a></li>
+        </ul>
+    
+    </div>
+</footer>
+</main><!-- end master container -->
 
-    <!-- Quiz and Survey prompt -->
-    <div id="quiz-prompt"></div>
+<!-- Quiz and Survey prompt -->
+<div id="quiz-prompt"></div>
+
 </body>
 </html>`;
